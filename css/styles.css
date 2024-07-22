@@ -25,7 +25,7 @@ body {
     max-width: auto;
     margin: 1px auto;
     background-color: maroon;
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	/* height: auto; */
@@ -83,7 +83,7 @@ button:hover {
 }
 
 h1 {
-    font-size: 30px;
+    font-size: 28px;
     text-align: center;
 	width: 100%;
 	font-weight: bold;
@@ -132,7 +132,7 @@ footer {
 
 .container-home {
     max-width: 600px;
-    margin: 20px auto;
+    margin: 10px auto;
 	background-color: maroon;
 	/* background-color: #fff; */
     padding: 20px;
