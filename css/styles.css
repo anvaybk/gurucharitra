@@ -1,0 +1,141 @@
+/* styles.css */
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+	user-select: none;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+	background-color: maroon;
+	/* background-color: #fff; */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	height: 100%;
+}
+
+.container-heading {
+    max-width: auto;
+    margin: 20px auto;
+    background-color: maroon;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	/* height: auto; */
+	/* max-height: fit-content; */
+	max-height: fit-content; 
+	
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+	
+}
+
+button {
+	display: block; 
+	background-color: maroon; 
+	color: beige; 
+	width: 100%; 
+	height: 50px; 
+	font-size: 24px; 
+	border-radius: 40px; 
+	border: none; 
+    text-align: center;
+	font-weight: bold;
+
+/**
+    padding: 10px 20px;
+    font-size: 26px;
+    background-color: #007bff;  /* #722F37; green; #e19510; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+	border-width: 80%;
+	width: width:200px;
+	height: 50px;
+	display: block;
+	white-space: normal;
+ 
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  cursor: pointer;
+  display: table-cell;  
+ /* vertical-align: middle; margin: 4px 2px; */
+}
+
+button:hover {
+    background-color: #e19510;
+}
+
+h1 {
+    font-size: 30px;
+    text-align: center;
+	width: 100%;
+	font-weight: bold;
+	background-color: maroon;
+	color: beige; 
+}
+
+.chapter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+	background-color: bisque;
+	padding: 20px;
+
+}
+
+.chapter-content {
+    max-width: 100%;
+    overflow-y: auto;
+	max-height: 750px; 
+    /* max-height: fit-content;	*/		/* 600px;  Adjust as needed  work on this point*/ 
+	background-color: bisque; 
+	font-size: 24px;
+	text-align: center;
+	font-weight: bold;
+	user-select: none	
+}
+
+
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.container-home {
+    max-width: 600px;
+    margin: 20px auto;
+	background-color: maroon;
+	/* background-color: #fff; */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
