@@ -38,8 +38,22 @@
     },
     {
       "src": "images/icon-512x512.png",
-      "type": "image/png", "sizes": "512x512"
+      "type": "image/png", "sizes": "512x512",
+	  "form_factor": "narrow"
     }
   ]
-
+"screenshots": [
+    {
+      "src": "images/icon-1280x720.png",
+      "type": "image/png", "sizes": "1280x720",
+	  "form_factor": "wide"
+    },
+	{
+	 "src": "images/icon-1024x768.png",
+      "type": "image/png", "sizes": "1280x720",
+	  "form_factor": "wide"	
+	}
+	
+  ]
+	
 }
