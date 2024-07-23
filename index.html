@@ -8,45 +8,49 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <title> श्रीगुरुचरित्र सारामृत - Shri Gurucharitra Saramrut </title>
-    <style>
-        html, body {
-            width: auto;
-            height: auto;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        .container-heading {
-            text-align: center;
-            padding: 20px;
-        }
-        button {
-            background-color: maroon;
+	<style>
+		   #visitor-count {
+            margin-top: 20px;
+            font-size: 16px;
+			color: white;
+			text-align: center;
+	        }
+			button {
+            background-color: orange;
             padding: 10px 20px;
             font-size: 18px;
             border: none;
             cursor: pointer;
         }
-    </style>
+	</style>
 </head>
 <body>
     <div class="container-heading">
-        <h1>卐 || श्रीगुरुचरित्रसारामृत || 卐</h1>
-        <hr>
-        <img src="images/hd-datta_photo1.jpg" alt="Shri Guri Datta Photo" style="width:100%">
-        <hr>
-        <button onclick="startReading()">Start Now</button>
-        <hr>
-        <p id="visitor-count">Visitors: <span id="count">0</span></p>
-    </div>
-
-    <script src="js/script.js"></script>
-    <script>
+	    <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1> 
+		<hr> <br>  <p>  <p>   
+	   <td> <img src="images/hd-datta_photo1.jpg" alt="Shri Guri Datta Photo" style="width:100%"> <br> </td>
+	   <br>  <p>  <p> <br>  <p>  <p> <hr>
+	   <button onclick="startReading()"> प्रारंभ करण्यासाठी क्लिक करा </button> <hr>
+	   <br>  <p>  <p> <br> </p> </p> </p> </p>
+	   <p id="visitor-count">Total Site Visitors: <span id="count">0</span></p>
+	  <p> </p> <br>
+	  <p> </p> <br>
+	  <p> </p> <br>
+	  <p> </p> <br>
+	  <p> </p> <br>
+	  <p> </p> <br>
+	  <p> </p> <p></p> <br>
+	 </div>  
+	<script src="js/script.js"></script>
+	  <p>
+	<script>
         // Increment visitor count
         let count = localStorage.getItem('visitorCount') || 0;
         count++;
         localStorage.setItem('visitorCount', count);
         document.getElementById('count').textContent = count;
     </script>
+	
+
 </body>
 </html>
