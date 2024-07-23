@@ -4,10 +4,12 @@
     "start_url":"index.html",
     "display":"standalone",
     "background_color":"#5900b3",
+    "orientation": "portrait",
+    "offline_enabled": true,
     "theme_color":"black",
     "scope": ".",
     "description":"This is Shri Gurucharitra Saramrut",
-	"icons": [
+    "icons": [
     {
       "src": "images/icon-72x72.png",
       "type": "image/png", "sizes": "72x72"
@@ -39,18 +41,30 @@
     {
       "src": "images/icon-512x512.png",
       "type": "image/png", "sizes": "512x512",
- 	"form_factor": "narrow"
-    },
+	}
+],
+   "screenshots": [
     {
-      "src": "images/icon-1280x720.png",
-      "type": "image/png", "sizes": "1280x720",
+      "src": "images/icon-400x858",
+      "type": "image/png", "sizes": "400x858",
       "form_factor": "wide"
     },
 	{
-	 "src": "images/icon-1024x768.png",
-      "type": "image/png", "sizes": "1024x768",
-	  "form_factor": "narrow"	
+      "src": "images/Screenshot-400x858",
+      "type": "image/png", "sizes": "400x858",
+      "form_factor": "wide"
+    },
+ {
+      "src": "images/icon-1280x720.png",
+      "type": "image/png", "sizes": "1280x720",
+      "form_factor": "wide"
+    },	   
+     {
+     "src": "images/icon-1024x768.png",
+     "type": "image/png", "sizes": "1280x720",
+     "form_factor": "wide"	
 	}
+
   ]
-	
+ 
 }
