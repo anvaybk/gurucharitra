@@ -61,7 +61,7 @@
       "src": "images/Screenshot-400x858.png",
       "type": "image/png",
       "sizes": "400x858",
-      "form_factor": "wide"
+      "form_factor": "narrow"
     },
     {
       "src": "images/icon-1280x720.png",
@@ -72,8 +72,8 @@
     {
       "src": "images/icon-1024x768.png",
       "type": "image/png",
-      "sizes": "1280x720",
-      "form_factor": "wide"
+      "sizes": "1024x768",
+      "form_factor": "narrow"
     }
   ],
   "offline_enabled": true
