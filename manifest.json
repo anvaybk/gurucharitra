@@ -41,7 +41,6 @@
       "type": "image/png", "sizes": "512x512",
 	  "form_factor": "narrow"
     }
-  ]
 "screenshots": [
     {
       "src": "images/icon-1280x720.png",
@@ -53,7 +52,7 @@
       "type": "image/png", "sizes": "1280x720",
 	  "form_factor": "wide"	
 	}
-	
+   ]
   ]
 	
 }
