@@ -1,70 +1,80 @@
 {
-    "name":"Shri Gurucharitra",
-    "short_name":"gurucharitra",
-    "start_url":"index.html",
-    "display":"standalone",
-    "background_color":"#5900b3",
-    "orientation": "portrait",
-    "offline_enabled": true,
-    "theme_color":"black",
-    "scope": ".",
-    "description":"This is Shri Gurucharitra Saramrut",
-    "screenshots": [
-    {
-      "src": "images/icon-400x858",
-      "type": "image/png", "sizes": "400x858",
-      "form_factor": "wide"
-    },
-	{
-      "src": "images/Screenshot-400x858",
-      "type": "image/png", "sizes": "400x858",
-      "form_factor": "wide"
-    },
- {
-      "src": "images/icon-1280x720.png",
-      "type": "image/png", "sizes": "1280x720",
-      "form_factor": "wide"
-    },	   
-     {
-     "src": "images/icon-1024x768.png",
-     "type": "image/png", "sizes": "1280x720",
-     "form_factor": "wide"	
-	}
-],
- "icons": [
+  "name": "Shri Gurucharitra",
+  "short_name": "gurucharitra",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#5900b3",
+  "orientation": "portrait",
+  "scope": ".",
+  "description": "This is Shri Gurucharitra Saramrut",
+  "theme_color": "black",
+  "icons": [
     {
       "src": "images/icon-72x72.png",
-      "type": "image/png", "sizes": "72x72"
+      "type": "image/png",
+      "sizes": "72x72"
     },
     {
       "src": "images/icon-96x96.png",
-      "type": "image/png", "sizes": "96x96"
+      "type": "image/png",
+      "sizes": "96x96"
     },
     {
       "src": "images/icon-128x128.png",
-      "type": "image/png","sizes": "128x128"
+      "type": "image/png",
+      "sizes": "128x128"
     },
     {
       "src": "images/icon-144x144.png",
-      "type": "image/png", "sizes": "144x144"
+      "type": "image/png",
+      "sizes": "144x144"
     },
     {
       "src": "images/icon-152x152.png",
-      "type": "image/png", "sizes": "152x152"
+      "type": "image/png",
+      "sizes": "152x152"
     },
     {
       "src": "images/icon-192x192.png",
-      "type": "image/png", "sizes": "192x192"
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
       "src": "images/icon-384x384.png",
-      "type": "image/png", "sizes": "384x384"
+      "type": "image/png",
+      "sizes": "384x384"
     },
     {
       "src": "images/icon-512x512.png",
-      "type": "image/png", "sizes": "512x512",
-    },
-
+      "type": "image/png",
+      "sizes": "512x512"
+    }
   ],
- 
+  "screenshots": [
+    {
+      "src": "images/icon-400x858.png",
+      "type": "image/png",
+      "sizes": "400x858",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/Screenshot-400x858.png",
+      "type": "image/png",
+      "sizes": "400x858",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/icon-1280x720.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/icon-1024x768.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide"
+    }
+  ],
+  "offline_enabled": true
 }
