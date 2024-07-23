@@ -8,9 +8,9 @@ self.addEventListener("install", function (e) {
       return cache.addAll([
         "/", // Cache the root URL
         "/index.html", // Cache other important resources like main HTML files
-        "/styles/main.css", // Example: Cache CSS files
-        "/scripts/main.js", // Example: Cache JavaScript files
-        "/images/logo.png" // Example: Cache images
+        "/css/styles.css", // Example: Cache CSS files
+        "/js/script.js", // Example: Cache JavaScript files
+        "/images/hd-datta_photo1.jpg" // Example: Cache images
       ]);
     })
   );
