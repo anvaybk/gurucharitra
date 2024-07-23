@@ -42,8 +42,8 @@
       "src": "images/icon-512x512.png",
       "type": "image/png", "sizes": "512x512",
 	},
-],
-   "screenshots": [
+   
+"screenshots": [
     {
       "src": "images/icon-400x858",
       "type": "image/png", "sizes": "400x858",
@@ -64,7 +64,7 @@
      "type": "image/png", "sizes": "1280x720",
      "form_factor": "wide"	
 	}
-
+]
   ]
  
 }
