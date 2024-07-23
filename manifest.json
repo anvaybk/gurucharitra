@@ -3,7 +3,7 @@
   "short_name": "gurucharitra",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#5900b3",
+  "background_color": "orange",
   "orientation": "portrait",
   "scope": ".",
   "description": "This is Shri Gurucharitra Saramrut",
