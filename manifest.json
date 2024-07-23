@@ -1,12 +1,12 @@
 {
-  "name": "Shri Gurucharitra",
+  "name": "Gurucharitra",
   "short_name": "gurucharitra",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "orange",
   "orientation": "portrait",
   "scope": ".",
-  "description": "This is Shri Gurucharitra Saramrut",
+  "description": "Shri Gurucharitra Saramrut",
   "theme_color": "black",
   "icons": [
     {
