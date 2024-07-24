@@ -4,7 +4,7 @@
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "orange",
-  "orientation": "any",
+  "orientation": "portrait",
   "scope": ".",
   "description": "Shri Gurucharitra Saramrut",
   "theme_color": "black",
