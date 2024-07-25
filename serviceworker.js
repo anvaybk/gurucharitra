@@ -8,11 +8,11 @@ self.addEventListener("install", (event) => {
     caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
         "/", // Cache the root URL
-        "index.html", // Cache HTML file
-        "css/styles.css", // Cache CSS file
-        "js/script.js", // Cache JavaScript file
-        "images/shree_gurucharitra_saramrut.jpg",
-        "images/hd-datta_photo1.jpg" // Cache images
+        "/index.html", // Cache HTML file
+        "/css/styles.css", // Cache CSS file
+        "/js/script.js", // Cache JavaScript file
+        "/images/shree_gurucharitra_saramrut.jpg",
+        "/images/hd-datta_photo1.jpg" // Cache images
       ]);
     })
   );
