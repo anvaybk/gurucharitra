@@ -10,6 +10,31 @@
   "theme_color": "black",
   "icons": [
     {
+      "src": "images/icon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+	{
+      "src": "images/icon-24x24.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+	{
+      "src": "images/icon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+	{
+      "src": "images/icon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+	{
+      "src": "images/icon-64x64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+	{
       "src": "images/icon-72x72.png",
       "type": "image/png",
       "sizes": "72x72"
@@ -34,46 +59,126 @@
       "type": "image/png",
       "sizes": "152x152"
     },
+	{
+      "src": "images/icon-167x167.png",
+      "type": "image/png",
+      "sizes": "167x167"
+    },
+	{
+      "src": "images/icon-180x180.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
     {
       "src": "images/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
-    {
+	{
+      "src": "images/icon-256x256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+	{
+      "src": "images/icon-300x620.png",
+      "type": "image/png",
+      "sizes": "300x620"
+    },
+	{
       "src": "images/icon-384x384.png",
       "type": "image/png",
       "sizes": "384x384"
     },
     {
+      "src": "images/icon-400x858.png",
+      "type": "image/png",
+      "sizes": "400x858"
+    },
+	{
+      "src": "images/icon-493x847.png",
+      "type": "image/png",
+      "sizes": "493x847"
+    },
+	{
       "src": "images/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+	{
+      "src": "images/icon-540x720.png",
+      "type": "image/png",
+      "sizes": "540x720"
+    },
+	{
+      "src": "images/icon-720x540.png",
+      "type": "image/png",
+      "sizes": "720x540"
+    },
+	{
+      "src": "images/icon-784x984.png",
+      "type": "image/png",
+      "sizes": "784x984"
+    },
+	{
+      "src": "images/icon-800x600.png",
+      "type": "image/png",
+      "sizes": "800x600"
+    },
+	{
+      "src": "images/icon-1024x768.png",
+      "type": "image/png",
+      "sizes": "1024x768"
+    },
+	{
+      "src": "images/icon-1024x1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    },
+	{
+      "src": "images/icon-1224x924.png",
+      "type": "image/png",
+      "sizes": "1224x924"
+    },
+	{
+      "src": "images/icon-1280x720.png",
+      "type": "image/png",
+      "sizes": "1280x720"
+    },
+	{
+      "src": "images/icon-1294x924.png",
+      "type": "image/png",
+      "sizes": "1294x924"
+    },
+    {
+      "src": "images/icon-1578x855.png",
+      "type": "image/png",
+      "sizes": "1578x855"
     }
   ],
   "screenshots": [
     {
-      "src": "images/icon-400x858.png",
-      "type": "image/png",
-      "sizes": "400x858",
-      "form_factor": "wide"
-    },
-    {
-      "src": "images/Screenshot-400x858.png",
+      "src": "images/screenshot-400x858.png",
       "type": "image/png",
       "sizes": "400x858",
       "form_factor": "narrow"
     },
     {
-      "src": "images/icon-1280x720.png",
+      "src": "images/screenshot-800x600.png",
       "type": "image/png",
-      "sizes": "1280x720",
+      "sizes": "800x600",
       "form_factor": "wide"
     },
     {
-      "src": "images/icon-1024x768.png",
+      "src": "images/screenshot-540x720.png",
       "type": "image/png",
-      "sizes": "1024x768",
+      "sizes": "540x720",
       "form_factor": "narrow"
+    },
+    {
+      "src": "images/screenshot-720x540.png",
+      "type": "image/png",
+      "sizes": "720x540",
+      "form_factor": "wide"
     }
   ],
   "offline_enabled": true
