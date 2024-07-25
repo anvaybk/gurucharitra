@@ -3,7 +3,7 @@
   "short_name": "gurucharitra",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "orange",
+  "background_color": "maroon",
   "orientation": "portrait",
   "scope": ".",
   "description": "Shri Gurucharitra Saramrut",
@@ -28,6 +28,11 @@
       "src": "images/icon-48x48.png",
       "type": "image/png",
       "sizes": "48x48"
+    },
+	 {
+      "src": "images/icon-50x50.png",
+      "type": "image/png",
+      "sizes": "50x50"
     },
 	{
       "src": "images/icon-64x64.png",
