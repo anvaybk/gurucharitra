@@ -7,8 +7,8 @@
   "background_color": "maroon",
   "orientation": "portrait",
   "scope": ".",
-  "description": "Shri Gurucharitra Saramrut",
-  "theme_color": "orange",
+  "description": "Shri Gurucharitra Saramrut - श्रीगुरुचरित्रसारामृत",
+  "theme_color": "black",
   "icons": [
     {
       "src": "images/icon-16x16.png",
@@ -167,13 +167,13 @@
       "src": "images/icon-400x858.png",
       "type": "image/png",
       "sizes": "400x858",
-      "form_factor": "narrow"
+      "form_factor": "wide"
     },
     {
       "src": "images/screenshot-400x858.png",
       "type": "image/png",
       "sizes": "400x858",
-      "form_factor": "narrow"
+      "form_factor": "wide"
     },
     {
       "src": "images/screenshot-800x600.png",
