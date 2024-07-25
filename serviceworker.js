@@ -10,6 +10,7 @@ self.addEventListener("install", function (e) {
         "/index.html", // Cache other important resources like main HTML files
         "/css/styles.css", // Example: Cache CSS files
         "/js/script.js", // Example: Cache JavaScript files
+         "/images/shree_gurucharitra_saramrut.jpg",
         "/images/hd-datta_photo1.jpg" // Example: Cache images
       ]);
     })
