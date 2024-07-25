@@ -73,7 +73,7 @@ self.addEventListener("message", (event) => {
 
 let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
+self.addEventListener('beforeinstallprompt', (e) => {
   // Prevent the default prompt
   e.preventDefault();
   // Stash the event so it can be triggered later.
