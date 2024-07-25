@@ -1,13 +1,14 @@
 {
   "name": "Gurucharitra",
   "short_name": "gurucharitra",
-  "start_url": "/",
+   "id": "https://anvaybk.github.io/gurucharitra/",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "maroon",
   "orientation": "portrait",
   "scope": ".",
   "description": "Shri Gurucharitra Saramrut",
-  "theme_color": "black",
+  "theme_color": "orange",
   "icons": [
     {
       "src": "images/icon-16x16.png",
@@ -77,6 +78,7 @@
     {
       "src": "images/icon-192x192.png",
       "type": "image/png",
+      "purpose": "maskable",
       "sizes": "192x192"
     },
 	{
