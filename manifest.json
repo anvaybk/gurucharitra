@@ -156,6 +156,12 @@
     }
   ],
   "screenshots": [
+   {
+      "src": "images/icon-400x858.png",
+      "type": "image/png",
+      "sizes": "400x858",
+      "form_factor": "narrow"
+    },
     {
       "src": "images/screenshot-400x858.png",
       "type": "image/png",
