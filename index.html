@@ -39,7 +39,52 @@
 	</style>
 </head>
 <body>
-    <div class="container-heading" oncontextmenu="return false;">
+ <h1>Welcome to Gurucharitra PWA</h1>
+  <button id="install-button" style="display: none;">Install App</button>
+
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      // Prevent the default install prompt
+      event.preventDefault();
+      // Save the event for later use
+      deferredPrompt = event;
+      // Show the install button
+      document.getElementById('install-button').style.display = 'block';
+    });
+
+    document.getElementById('install-button').addEventListener('click', () => {
+      // Hide the install button
+      document.getElementById('install-button').style.display = 'none';
+      // Show the install prompt
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('serviceworker.js').then((registration) => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, (error) => {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+      });
+    }
+  </script>
+	
+		
+	<div class="container-heading" oncontextmenu="return false;">
 	    <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1> 
 		<hr> <br>  <p>  <p>   
 	   <td> <img src="images/shree_gurucharitra_saramrut.jpg" alt="Shri Guri Datta Photo" class="center" style="width:100%"> <br> </td>
