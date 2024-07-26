@@ -12,6 +12,7 @@ self.addEventListener("install", (event) => {
         "/css/styles.css", // Cache CSS file
         "/js/script.js", // Cache JavaScript file
         "/images/shree_gurucharitra_saramrut.jpg",
+         "/chapters.html",
         "/images/hd-datta_photo1.jpg" // Cache images
       ]);
     })
