@@ -7,7 +7,7 @@ self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(staticCacheName).then((cache) => {
       return cache.addAll([
-        "/gurucharitra", // Cache the root URL
+        "/", // Cache the root URL
         "/index.html", // Cache HTML file
         "/css/styles.css", // Cache CSS file
         "/js/script.js", // Cache JavaScript file
