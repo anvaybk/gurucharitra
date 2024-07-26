@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="Shri Gurucharitra Saramrut - श्रीगुरुचरित्र सारामृत: A spiritual website dedicated to Shri Guru Dattatreya. Read the holy text, view images, and start your spiritual journey today.">
@@ -22,22 +22,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
     <title> श्रीगुरुचरित्र सारामृत - Shri Gurucharitra Saramrut </title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
-        .container-heading {
-            text-align: center;
-        }
         #visitor-count {
             margin-top: 20px;
             font-size: 16px;
@@ -50,26 +34,10 @@
             font-size: 24px;
             border: none;
             cursor: pointer;
-            margin: 20px;
-        }
-        img {
-            width: 100%;
-            height: auto;
         }
     </style>
 </head>
 <body>
-    <div class="container-heading" oncontextmenu="return false;">
-        <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
-        <hr>
-        <img src="images/shree_gurucharitra_saramrut.jpg" alt="Shri Guri Datta Photo" class="center">
-        <hr>
-        <button onclick="startReading()"> प्रारंभ करण्यासाठी क्लिक करा </button>
-        <hr>
-        <p id="visitor-count">Total Site Visitors: <span id="count">0</span></p>
-    </div> 
-    <script src="js/script.js"></script>
-
     <button id="install-button" style="display: none;">Install Test App</button>
 
     <script>
@@ -78,11 +46,7 @@
         window.addEventListener('beforeinstallprompt', (event) => {
             event.preventDefault();
             deferredPrompt = event;
-
-            // Check if the app is already installed
-            if (!window.matchMedia('(display-mode: standalone)').matches) {
-                document.getElementById('install-button').style.display = 'block';
-            }
+            document.getElementById('install-button').style.display = 'block';
         });
 
         document.getElementById('install-button').addEventListener('click', () => {
@@ -109,13 +73,26 @@
                 });
             });
         }
+    </script>
 
-        // Increment visitor count
+    <div class="container-heading" oncontextmenu="return false;">
+        <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
+        <hr>
+        <img src="images/shree_gurucharitra_saramrut.jpg" alt="Shri Guri Datta Photo" class="center" style="width:100%">
+        <hr>
+        <button onclick="startReading()"> प्रारंभ करण्यासाठी क्लिक करा </button>
+        <hr>
+        <p id="visitor-count">Total Site Visitors: <span id="count">0</span></p>
+    </div>
+
+    <script src="js/script.js"></script>
+
+    <button id="install-button" style="display: none;">Install Bottom Test App</button>
+    <script>
         let count = localStorage.getItem('visitorCount') || 0;
         count++;
         localStorage.setItem('visitorCount', count);
         document.getElementById('count').textContent = count;
     </script>
-
 </body>
 </html>
