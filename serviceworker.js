@@ -12,9 +12,13 @@ self.addEventListener("install", (event) => {
         "/css/styles.css", // Cache CSS file
         "/js/script.js", // Cache JavaScript file
         "/images/shree_gurucharitra_saramrut.jpg",
-         "/chapters.html",
+        "/chapters.html",
         "/images/hd-datta_photo1.jpg" // Cache images
-      ]);
+      ]).catch((error) => {
+        console.error("[Service Worker] Failed to cache during install:", error);
+      });
+    }).catch((error) => {
+      console.error("[Service Worker] Failed to open cache:", error);
     })
   );
 });
@@ -32,6 +36,8 @@ self.addEventListener("activate", (event) => {
           return caches.delete(cacheName);
         })
       );
+    }).catch((error) => {
+      console.error("[Service Worker] Failed to delete old caches:", error);
     })
   );
 });
@@ -52,13 +58,23 @@ self.addEventListener("fetch", (event) => {
         if (networkResponse && networkResponse.status === 200) {
           const responseClone = networkResponse.clone();
           caches.open(staticCacheName).then((cache) => {
-            cache.put(event.request, responseClone);
+            cache.put(event.request, responseClone).catch((error) => {
+              console.error("[Service Worker] Failed to cache response:", error);
+            });
+          }).catch((error) => {
+            console.error("[Service Worker] Failed to open cache:", error);
           });
         }
         return networkResponse;
-      }).catch(() => {
-        console.error("[Service Worker] Error fetching:", event.request.url);
+      }).catch((error) => {
+        console.error("[Service Worker] Error fetching:", event.request.url, error);
+        // Optionally, return a fallback response or cache a fallback page
+        return caches.match('/offline.html'); // Example fallback
       });
+    }).catch((error) => {
+      console.error("[Service Worker] Error matching cache:", error);
+      // Optionally, return a fallback response or cache a fallback page
+      return caches.match('/offline.html'); // Example fallback
     })
   );
 });
