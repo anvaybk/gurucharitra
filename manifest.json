@@ -1,11 +1,11 @@
 {
-  "name": "Gurucharitra",
-  "short_name": "gurucharitra",
-  "start_url": "/",
+  "name": "श्रीगुरुचरित्रसारामृत Shri Gurucharitra Saramrut",
+  "short_name": "Gurucharitra",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "maroon",
   "orientation": "portrait-primary",
-  "scope": ".",
+  "scope": "/",
   "description": " श्रीगुरुचरित्रसारामृत - Shri Gurucharitra Saramrut",
   "theme_color": "#000000",
   "icons": [
@@ -156,6 +156,7 @@
       "sizes": "1578x855"
     }
   ],
+  "splash_pages": null,	
   "screenshots": [
    {
       "src": "images/icon-400x858.png",
@@ -182,5 +183,12 @@
       "form_factor": "wide"
     }
   ],
+  "prefer_related_applications": false,
+  "dir": "ltr",
+  "lang": "en",
+  "serviceworker": {
+  "src": "serviceworker.js",
+   "scope": "/",
+   "update_via_cache": "all"
   "offline_enabled": true
 }
