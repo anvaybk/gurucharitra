@@ -184,7 +184,7 @@
   ],
   "prefer_related_applications": false,
   "dir": "ltr",
-  "lang": "en"
+  "lang": "en",
   "update_via_cache": "all",
   "offline_enabled": true
 }
