@@ -47,7 +47,7 @@
 </head>
 <body>
  <script>
- // Register the service worker
+// Register the service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceworker.js')
@@ -64,24 +64,25 @@ if ('serviceWorker' in navigator) {
 let deferredPrompt;
 const installBtn = document.getElementById('install-btn');
 
-// Check if the app is installed and adjust the button visibility
-window.addEventListener('appinstalled', (evt) => {
-  installBtn.style.display = 'none';
-  alert('App is already installed');
-});
+// Check if the app is installed
+const isAppInstalled = () => {
+  // Check if the app is running in standalone mode
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+};
 
 // Show the install button if the app is not installed
-window.addEventListener('beforeinstallprompt', (e) => {
+const handleBeforeInstallPrompt = (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  
-  // Check if the app is already installed
-  if (!navigator.standalone && !window.matchMedia('(display-mode: standalone)').matches) {
+
+  // Show the install button if the app is not installed
+  if (!isAppInstalled()) {
     installBtn.style.display = 'block';
   }
-});
+};
 
-installBtn.addEventListener('click', () => {
+// Handle the install button click event
+const handleInstallButtonClick = () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((result) => {
@@ -92,6 +93,24 @@ installBtn.addEventListener('click', () => {
       }
       deferredPrompt = null;
     });
+  }
+};
+
+// Handle the appinstalled event
+const handleAppInstalled = () => {
+  installBtn.style.display = 'none';
+  alert('App is already installed');
+};
+
+// Add event listeners
+window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+installBtn.addEventListener('click', handleInstallButtonClick);
+window.addEventListener('appinstalled', handleAppInstalled);
+
+// Hide the install button on page load if the app is already installed
+window.addEventListener('load', () => {
+  if (isAppInstalled()) {
+    installBtn.style.display = 'none';
   }
 });
 
