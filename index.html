@@ -38,43 +38,7 @@
     </style>
 </head>
 <body>
-   <button id="install-button" style="display: none;"> मोबाईल ॲप इंस्टॉल करा </button>
-   <!--  <script>
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (event) => {
-            event.preventDefault();
-            deferredPrompt = event;
-            document.getElementById('install-button').style.display = 'block';
-        });
-
-        document.getElementById('install-button').addEventListener('click', () => {
-            document.getElementById('install-button').style.display = 'none';
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('User accepted the install prompt');
-                    } else {
-                        console.log('User dismissed the install prompt');
-                    }
-                    deferredPrompt = null;
-                });
-            }
-        });
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('serviceworker.js').then((registration) => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                }, (error) => {
-                    console.log('ServiceWorker registration failed: ', error);
-                });
-            });
-        }
-    </script> -->
-
-    <div class="container-heading" oncontextmenu="return false;">
+      <div class="container-heading" oncontextmenu="return false;">
         <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
         <hr>
         <img src="images/shree_gurucharitra_saramrut.jpg" alt="Shri Guri Datta Photo" class="center" style="width:100%">
@@ -83,12 +47,9 @@
         <hr>
         <p id="visitor-count">Total Site Visitors: <span id="count">0</span></p>
         <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> <br>
-    </div>
-      <h1>Welcome to Shri Gurucharitra Saramrut</h1>
-  <p>Explore the spiritual teachings and images of Shri Guru Dattatreya.</p>
-
-  <button id="install-btn">Install Test App</button>
-
+        <button id="install-btn">Install Test App</button>
+      </div>
+     
   <script src="js/script.js"></script>
 
   <script>
