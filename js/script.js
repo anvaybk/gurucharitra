@@ -1,17 +1,7 @@
 // script.js
 // Install the application via button
 // Register the service worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('serviceworker.js')
-      .then((registration) => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      })
-      .catch((error) => {
-        console.error('ServiceWorker registration failed: ', error);
-      });
-  });
-}
+// Code added in index.html
 
 // Handle the installation prompt
 let deferredPrompt;
