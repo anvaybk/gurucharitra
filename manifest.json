@@ -165,11 +165,6 @@
       "form_factor": "narrow"
     },
     {
-      "src": "images/screenshot-400x858.png",
-      "type": "image/png",
-      "sizes": "400x858",
-     },
-    {
       "src": "images/screenshot-800x600.png",
       "type": "image/png",
       "sizes": "800x600",
@@ -179,7 +174,7 @@
       "src": "images/screenshot-540x720.png",
       "type": "image/png",
       "sizes": "540x720",
-      "form_factor": "wide"
+      "form_factor": "narrow"
     },
     {
       "src": "images/screenshot-720x540.png",
