@@ -17,6 +17,7 @@
     <meta name="twitter:image" content="https://anvaybk.github.io/gurucharitra/images/shree_gurucharitra_saramrut.jpg">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -47,75 +48,51 @@
 </head>
 <body>
  <script>
-// Register the service worker
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('serviceworker.js')
-      .then((registration) => {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      })
-      .catch((error) => {
-        console.error('ServiceWorker registration failed: ', error);
-      });
-  });
-}
+<!-- <h1>Welcome to Gurucharitra PWA</h1> -->
+  <button id="install-button" style="display: Yes;">Install Test App</button> 
 
-// Handle the installation prompt
-let deferredPrompt;
-const installBtn = document.getElementById('install-btn');
+  <script>
+    let deferredPrompt;
 
-// Check if the app is installed
-const isAppInstalled = () => {
-  // Check if the app is running in standalone mode
-  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-};
-
-// Show the install button if the app is not installed
-const handleBeforeInstallPrompt = (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-
-  // Show the install button if the app is not installed
-  if (!isAppInstalled()) {
-    installBtn.style.display = 'none';
-  }
-};
-
-// Handle the install button click event
-const handleInstallButtonClick = () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((result) => {
-      if (result.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', (event) => {
+      // Prevent the default install prompt
+      event.preventDefault();
+      // Save the event for later use
+      deferredPrompt = event;
+      // Show the install button
+      document.getElementById('install-button').style.display = 'block';
     });
-  }
-};
 
-// Handle the appinstalled event
-const handleAppInstalled = () => {
-  installBtn.style.display = 'none';
-  alert('App is already installed');
-};
+    document.getElementById('install-button').addEventListener('click', () => {
+      // Hide the install button
+      document.getElementById('install-button').style.display = 'none';
+      // Show the install prompt
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
 
-// Add event listeners
-window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-installBtn.addEventListener('click', handleInstallButtonClick);
-window.addEventListener('appinstalled', handleAppInstalled);
-
-// Hide the install button on page load if the app is already installed
-window.addEventListener('load', () => {
-  if (isAppInstalled()) {
-    installBtn.style.display = 'none';
-  }
-});
-
- </script>
-  
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('serviceworker.js').then((registration) => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, (error) => {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+      });
+    }
+  </script>
+	
+        <button id="install-button" style="display: Yes;">Install Top Test App</button>
         <div class="container-heading" oncontextmenu="return false;">
         <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
         <hr>
@@ -128,6 +105,7 @@ window.addEventListener('load', () => {
        </div>
          <button id="install-btn">मोबाईल ॲप इंस्टॉल करा</button>
   <script src="js/script.js"></script>
+        <button id="install-button" style="display: Yes;">Install Bottom Test App</button> 
 
   <script>
         let count = localStorage.getItem('visitorCount') || 0;
