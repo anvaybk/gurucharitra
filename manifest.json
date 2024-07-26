@@ -189,6 +189,6 @@
   "serviceworker": {
   "src": "serviceworker.js",
    "scope": "/",
-   "update_via_cache": "all"
+   "update_via_cache": "all",
   "offline_enabled": true
 }
