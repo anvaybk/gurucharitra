@@ -38,7 +38,8 @@
     </style>
 </head>
 <body>
-     if ('serviceWorker' in navigator) {
+ <script>
+  if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('serviceworker.js')
       .then((registration) => {
@@ -49,7 +50,7 @@
       });
   });
 }
-
+ </script>
   
         <div class="container-heading" oncontextmenu="return false;">
         <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
