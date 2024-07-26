@@ -3,7 +3,7 @@
 // Register the service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('serviceworker.js')
+    navigator.serviceWorker.register('/serviceworker.js')
       .then((registration) => {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
       })
@@ -17,10 +17,21 @@ if ('serviceWorker' in navigator) {
 let deferredPrompt;
 const installBtn = document.getElementById('install-btn');
 
+// Check if the app is installed and adjust the button visibility
+window.addEventListener('appinstalled', (evt) => {
+  installBtn.style.display = 'none';
+  alert('App is already installed');
+});
+
+// Show the install button if the app is not installed
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  installBtn.style.display = 'block';
+  
+  // Check if the app is already installed
+  if (!navigator.standalone && !window.matchMedia('(display-mode: standalone)').matches) {
+    installBtn.style.display = 'block';
+  }
 });
 
 installBtn.addEventListener('click', () => {
@@ -36,14 +47,6 @@ installBtn.addEventListener('click', () => {
     });
   }
 });
-
-// Hide the install button if the app is already installed
-window.addEventListener('appinstalled', (evt) => {
-  installBtn.style.display = 'none';
-  alert('App is already installed');
-});
-
-
 
 // Functions
 function startReading() {
