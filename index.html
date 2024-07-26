@@ -20,93 +20,99 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="site.webmanifest">
-	<title> श्रीगुरुचरित्र सारामृत - Shri Gurucharitra Saramrut </title>
-	<style>
-	#visitor-count {
+    <title> श्रीगुरुचरित्र सारामृत - Shri Gurucharitra Saramrut </title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .container-heading {
+            text-align: center;
+        }
+        #visitor-count {
             margin-top: 20px;
             font-size: 16px;
-	    color: white;
-	   text-align: center;
-	 }
-	button {
+            color: white;
+            text-align: center;
+        }
+        button {
             background-color: orange;
             padding: 10px 20px;
             font-size: 24px;
             border: none;
             cursor: pointer;
+            margin: 20px;
         }
-	</style>
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-<!-- <h1>Welcome to Gurucharitra PWA</h1> -->
-  <button id="install-button" style="display: Yes;">Install Test App</button> 
+    <div class="container-heading" oncontextmenu="return false;">
+        <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
+        <hr>
+        <img src="images/shree_gurucharitra_saramrut.jpg" alt="Shri Guri Datta Photo" class="center">
+        <hr>
+        <button onclick="startReading()"> प्रारंभ करण्यासाठी क्लिक करा </button>
+        <hr>
+        <p id="visitor-count">Total Site Visitors: <span id="count">0</span></p>
+    </div>
+    <button id="install-button" style="display: none;">Install Test App</button>
 
-  <script>
-    let deferredPrompt;
-
-    window.addEventListener('beforeinstallprompt', (event) => {
-      // Prevent the default install prompt
-      event.preventDefault();
-      // Save the event for later use
-      deferredPrompt = event;
-      // Show the install button
-      document.getElementById('install-button').style.display = 'block';
-    });
-
-    document.getElementById('install-button').addEventListener('click', () => {
-      // Hide the install button
-      document.getElementById('install-button').style.display = 'none';
-      // Show the install prompt
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the install prompt');
-          } else {
-            console.log('User dismissed the install prompt');
-          }
-          deferredPrompt = null;
-        });
-      }
-    });
-
-    // Register the service worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('serviceworker.js').then((registration) => {
-          console.log('ServiceWorker registration successful with scope: ', registration.scope);
-        }, (error) => {
-          console.log('ServiceWorker registration failed: ', error);
-        });
-      });
-    }
-  </script>
-	
-		
-	<div class="container-heading" oncontextmenu="return false;">
-	    <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1> 
-		<hr> <br>  <p>  <p>   
-	   <td> <img src="images/shree_gurucharitra_saramrut.jpg" alt="Shri Guri Datta Photo" class="center" style="width:100%"> <br> </td>
-	   <br>  <p>  <p> <br>  <p>  <p> <hr>
-	   <button onclick="startReading()"> प्रारंभ करण्यासाठी क्लिक करा </button> <hr>
-	   <br>  <p>  <p> <br> </p> </p> </p> </p>
-	   <p id="visitor-count">Total Site Visitors: <span id="count">0</span></p>
-	  <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> <br>
-	  <p> </p> <p></p> <br>
-	 </div>  
-	<script src="js/script.js"></script>
-	  <p>
-
-    
     <script>
+        let deferredPrompt;
+
+        window.addEventListener('beforeinstallprompt', (event) => {
+            event.preventDefault();
+            deferredPrompt = event;
+
+            // Check if the app is already installed
+            if (!window.matchMedia('(display-mode: standalone)').matches) {
+                document.getElementById('install-button').style.display = 'block';
+            }
+        });
+
+        document.getElementById('install-button').addEventListener('click', () => {
+            document.getElementById('install-button').style.display = 'none';
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('serviceworker.js').then((registration) => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, (error) => {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            });
+        }
+
         // Increment visitor count
         let count = localStorage.getItem('visitorCount') || 0;
         count++;
         localStorage.setItem('visitorCount', count);
         document.getElementById('count').textContent = count;
     </script>
-	
-
 </body>
 </html>
