@@ -1,7 +1,7 @@
 {
   "name": "Gurucharitra",
   "short_name": "gurucharitra",
-  "start_url": "./index.html",
+  "start_url": "/index.html",
   "display": "standalone",
   "background_color": "maroon",
   "orientation": "portrait-primary",
