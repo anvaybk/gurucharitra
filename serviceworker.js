@@ -13,6 +13,24 @@ self.addEventListener("install", (event) => {
         "/js/script.js", // Cache JavaScript file
         "/images/shree_gurucharitra_saramrut.jpg",
         "/chapters.html",
+        "/pages/chapters1.html",
+        "/pages/chapters2.html",
+        "/pages/chapters3.html",
+        "/pages/chapters4.html",
+        "/pages/chapters5.html",
+        "/pages/chapters6.html",
+        "/pages/chapters7.html",
+        "/pages/chapters8.html",
+        "/pages/chapters9.html",
+        "/pages/chapters10.html",
+        "/pages/chapters11.html",
+        "/pages/chapters12.html",
+        "/pages/chapters13.html",
+        "/pages/chapters14.html",
+        "/pages/chapters15.html",
+        "/pages/chapters16.html",
+        "/pages/sankalp.html",
+        "/pages/shreedattamantra.html",
         "/images/hd-datta_photo1.jpg" // Cache images
       ]).catch((error) => {
         console.error("[Service Worker] Failed to cache during install:", error);
