@@ -146,3 +146,24 @@ footer {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+/* Social Media */
+
+.social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        .social-icons li {
+            display: inline-block;
+        }
+        .social-icons a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+        }
