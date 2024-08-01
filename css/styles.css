@@ -167,3 +167,36 @@ footer {
             width: 40px;
             height: 40px;
         }
+
+/* Annual Event */
+
+.chapter-table {
+    max-width: 100%;
+    overflow-y: auto;
+	max-height: 750px; 
+   	background-color: bisque; 
+	font-size: 22px;
+	text-align: center;
+	font-weight: bold;
+	user-select: none	
+}
+
+table {
+		  border-collapse: collapse;
+		  border-spacing: 0;
+		  width: 100%;
+		  border: 1px solid bisque;
+		  font-weight: bold;
+		}
+		th, td {
+		  text-align: left;
+		  padding: 8px;
+		  border: 1px solid orange;     /* #ddd */
+		}
+		th {
+		  text-align: left;
+		  padding: 8px;
+		  border: 1px solid orange;
+		  background-color:orange;
+		/* tr:nth-child(even){background-color: #orange} */
+		/* tr:hover {background-color: coral;} */
