@@ -33,6 +33,7 @@ self.addEventListener("install", (event) => {
         "/pages/shreedattamantra.html",
         "/pages/saptahikparayan.html",
         "/pages/socialmedia.html",
+        "/pages/annualevents.html",
         "/images/hd-datta_photo1.jpg" // Cache images
       ]).catch((error) => {
         console.error("[Service Worker] Failed to cache during install:", error);
