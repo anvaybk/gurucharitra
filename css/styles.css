@@ -119,8 +119,7 @@ h1 {
 
 .chapter-content {
 	max-width: 100%;
-	overflow-y: hidden;
-	/* auto */
+	overflow-y: auto;
 	max-height: 1250px;
 	/* 750px; */
 	/* max-height: fit-content;	*/
