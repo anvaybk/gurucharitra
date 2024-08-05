@@ -142,11 +142,12 @@ footer {
 .container-home {
     max-width: 600px;
     margin: 10px auto;
-	background-color: maroon;
+    background-color: maroon;
 	/* background-color: #fff; */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
 }
 
 /* Social Media */
