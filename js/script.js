@@ -2,7 +2,8 @@
 
 // Functions
 function startReading() {
-    window.location.href = 'chapters.html';
+    window.location.href = 'home.html';
+     // window.location.href = 'chapters.html';
 }
 
 function goToChapter(chapterUrl) {
