@@ -17,7 +17,7 @@ function goToHome() {
 }
 
 function goToMainHome() {
-    window.location.href = './home.html';
+    window.location.href = '../home.html';
    // window.location.href = '../index.html';
    //	  window.location.href = '../chapters.html';
 }
