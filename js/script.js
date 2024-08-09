@@ -11,9 +11,9 @@ function goToChapter(chapterUrl) {
 }
 
 function goToHome() {
-    window.location.href = '../home.html';
+   // window.location.href = '../home.html';
    // window.location.href = '../index.html';
-   //	  window.location.href = '../chapters.html';
+      window.location.href = '../chapters.html';
 }
 
 function goToMainHome() {
