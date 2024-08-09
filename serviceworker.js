@@ -13,6 +13,7 @@ self.addEventListener("install", (event) => {
         "/js/script.js", // Cache JavaScript file
         "/images/shree_gurucharitra_saramrut.jpg",
         "/chapters.html",
+         "/home.html",
         "/pages/chapters1.html",
         "/pages/chapters2.html",
         "/pages/chapters3.html",
@@ -35,6 +36,10 @@ self.addEventListener("install", (event) => {
         "/pages/socialmedia.html",
         "/pages/annualevents.html",
         "/pages/videogallery.html",
+        "/pages/audiogallery.html",
+        "/pages/photogallery.html",
+        "/pages/sangeetsevaparayan.html",
+        "/pages/visheshsevaparayan.html",
         "/images/hd-datta_photo1.jpg" // Cache images
       ]).catch((error) => {
         console.error("[Service Worker] Failed to cache during install:", error);
