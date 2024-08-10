@@ -40,6 +40,11 @@ self.addEventListener("install", (event) => {
         "/pages/photogallery.html",
         "/pages/sangeetsevaparayan.html",
         "/pages/visheshsevaparayan.html",
+        "/images/YTube-Icon-40x40.png",
+        "/images/Instagram-Icon-40x40.png",
+        "/images/Whatsapp-Icon-40x40.png",
+        "/images/Google-maps-Icon-40x40.png",
+        "/images/Facebook-Icon-40x40.png",
         "/images/hd-datta_photo1.jpg" // Cache images
       ]).catch((error) => {
         console.error("[Service Worker] Failed to cache during install:", error);
