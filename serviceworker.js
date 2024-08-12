@@ -40,6 +40,7 @@ self.addEventListener("install", (event) => {
         "/pages/photogallery.html",
         "/pages/sangeetsevaparayan.html",
         "/pages/visheshsevaparayan.html",
+        "/pages/granthvachanseva.html",
         "/images/YTube-Icon-40x40.png",
         "/images/Instagram-Icon-40x40.png",
         "/images/Whatsapp-Icon-40x40.png",
