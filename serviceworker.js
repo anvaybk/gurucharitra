@@ -47,6 +47,15 @@ self.addEventListener("install", (event) => {
         "/images/Whatsapp-Icon-40x40.png",
         "/images/Google-maps-Icon-40x40.png",
         "/images/Facebook-Icon-40x40.png",
+        "/images/Granth-Vachan-Icon-40x40.png",
+        "/images/Registration-Icon-40x40.png",
+        "/images/Video-Gallery-Icon-40x40.png",
+        "/images/Audio-Gallery-Icon-40x40.png",
+        "/images/Photo-Gallery-Icon-40x40.png",
+        "/images/Social-Media-Icon-40x40.png",
+        "/images/AnnualEvent-Icon-40x40.png",
+        "/images/Donations-Icon-40x40.png",
+        "/images/ContactUs-Icon-40x40.png",
         "/images/hd-datta_photo1.jpg" // Cache images
       ]).catch((error) => {
         console.error("[Service Worker] Failed to cache during install:", error);
