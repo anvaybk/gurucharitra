@@ -13,6 +13,7 @@ self.addEventListener("install", (event) => {
         "/css/homestyles",
         "/js/script.js", // Cache JavaScript file
         "/images/shree_gurucharitra_saramrut.jpg",
+        "/images/shree_gurucharitra_saramrut.webp",
         "/chapters.html",
         "/home.html",
         "/pages/chapters1.html",
