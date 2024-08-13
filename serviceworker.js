@@ -10,10 +10,11 @@ self.addEventListener("install", (event) => {
         "/", // Cache the root URL
         "/index.html", // Cache HTML file
         "/css/styles.css", // Cache CSS file
+        "/css/homestyles",
         "/js/script.js", // Cache JavaScript file
         "/images/shree_gurucharitra_saramrut.jpg",
         "/chapters.html",
-         "/home.html",
+        "/home.html",
         "/pages/chapters1.html",
         "/pages/chapters2.html",
         "/pages/chapters3.html",
