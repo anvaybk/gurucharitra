@@ -103,7 +103,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
     nav.menu .menu-item {
         flex: 1 1 calc(50% - 40px);
         max-width: calc(50% - 40px);
