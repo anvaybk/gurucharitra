@@ -103,10 +103,12 @@ footer {
     }
 }
 
-@media screen and (max-width: 400px) {
-  nav.menu .menu-item  {
-    width: 50%;
-  }
+@media screen and (max-width: 350px) {
+    nav.menu .menu-item {
+        flex: 1 1 calc(50% - 40px);
+        max-width: calc(50% - 40px);
+    }
+}
 
 @media screen and (max-width: 480px) {
     nav.menu .menu-item {
