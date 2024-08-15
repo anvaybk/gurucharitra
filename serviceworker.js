@@ -44,6 +44,7 @@ self.addEventListener("install", (event) => {
         "/pages/sangeetsevaparayan.html",
         "/pages/visheshsevaparayan.html",
         "/pages/granthvachanseva.html",
+        "/pages/kavyarupigurucharitra.html",
         "/pages/donations.html",
         "/pages/contactus.html",
         "/images/YTube-Icon-40x40.png",
