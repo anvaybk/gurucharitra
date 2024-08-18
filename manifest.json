@@ -96,12 +96,7 @@
       "type": "image/png",
       "sizes": "384x384"
     },
-    {
-      "src": "images/screenshot-400x858.png",
-      "type": "image/png",
-      "sizes": "400x858"
-    },
-    {
+     {
       "src": "images/icon-493x847.png",
       "type": "image/png",
       "sizes": "493x847"
@@ -109,9 +104,8 @@
     {
       "src": "images/icon-512x512.png",
       "type": "image/png",
-      "purpose": "maskable",
-	  "sizes": "512x512"
-	},
+      "sizes": "512x512"
+    },
     {
       "src": "images/icon-540x720.png",
       "type": "image/png",
@@ -145,7 +139,7 @@
     {
       "src": "images/icon-1224x924.png",
       "type": "image/png",
-	  "purpose": "any",
+      "purpose": "any",	    
       "sizes": "1224x924"
     },
     {
@@ -164,14 +158,20 @@
       "src": "images/icon-1280x720.png",
       "type": "image/png",
       "sizes": "1280x720"
-	  "platform": "wide",
-    },
-	{
+      "platform": "wide",
+    },	  
+    {
       "src": "images/screenshot-540x720.png",
       "type": "image/png",
       "sizes": "540x720",
-      "platform": "narrow"
+      "form_factor": "narrow"
     },
+    {
+      "src": "images/screenshot-400x858.png",
+      "type": "image/png",
+       "platform": "narrow",	    
+      "sizes": "400x858"
+     },	  
     {
       "src": "images/screenshot-720x540.png",
       "type": "image/png",
@@ -187,5 +187,5 @@
   "categories": [
     "books",
     "productivity"
-  ]
+  ]	
 }
