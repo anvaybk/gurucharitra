@@ -254,6 +254,14 @@
       "accept": {
         "application/pdf": [".pdf"]
       },
+      "icons": [
+        {
+          "src": "images/icon-256x256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+        }
+      ],
+       
     {
       "action": "/open-mp3",
       "accept": {
