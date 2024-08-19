@@ -1,13 +1,7 @@
-const staticCacheName = "gurucharitra-v1"; // Use a versioned cache name
-
-self.addEventListener("install", (event) => {
-  console.log("[Service Worker] Installing...");
-
-  // Cache static assets during the install phase
-  event.waitUntil(
-    caches.open(staticCacheName).then((cache) => {
-      return cache.addAll([
-        "/", // Cache the root URL
+const CACHE_NAME = 'gurucharitra-v1'; // Use a versioned cache name
+const CACHE_EXPIRY_TIME = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
+const URLS_TO_CACHE = [
+        '/',
         "/index.html", // Cache HTML file
         "/css/styles.css", // Cache CSS file
         "/css/homestyles",
@@ -62,158 +56,129 @@ self.addEventListener("install", (event) => {
         "/images/Donations-Icon-40x40.png",
         "/images/ContactUs-Icon-40x40.png",
         "/images/hd-datta_photo1.jpg" // Cache images
-      ]).catch((error) => {
-        console.error("[Service Worker] Failed to cache during install:", error);
-      });
-    }).catch((error) => {
-      console.error("[Service Worker] Failed to open cache:", error);
+  '/offline.html', // Fallback page when offline
+];
+
+// Install: Cache assets
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log('Opened cache');
+      return cache.addAll(URLS_TO_CACHE);
     })
   );
+  self.skipWaiting();
 });
 
-self.addEventListener("activate", (event) => {
-  console.log("[Service Worker] Activating...");
-
-  // Remove old caches
+// Activate: Clean up old caches
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheNames.filter((cacheName) => {
-          return cacheName.startsWith("gurucharitra-") && cacheName !== staticCacheName;
-        }).map((cacheName) => {
-          return caches.delete(cacheName);
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            console.log('Deleting old cache:', cacheName);
+            return caches.delete(cacheName);
+          }
         })
       );
-    }).catch((error) => {
-      console.error("[Service Worker] Failed to delete old caches:", error);
     })
   );
+  self.clients.claim();
 });
 
-self.addEventListener("fetch", (event) => {
-  console.log("[Service Worker] Fetching:", event.request.url);
-
+// Fetch: Serve cached content when offline
+self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       if (response) {
-        console.log("[Service Worker] Found in Cache:", event.request.url);
+        const fetchTime = new Date(response.headers.get('date'));
+        const expiryTime = fetchTime.getTime() + CACHE_EXPIRY_TIME;
+        const now = Date.now();
+        if (now > expiryTime) {
+          return fetchAndUpdateCache(event.request);
+        }
         return response;
       }
-
-      console.log("[Service Worker] Not found in Cache. Fetching from network:", event.request.url);
-
-      return fetch(event.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
-          const responseClone = networkResponse.clone();
-          caches.open(staticCacheName).then((cache) => {
-            cache.put(event.request, responseClone).catch((error) => {
-              console.error("[Service Worker] Failed to cache response:", error);
-            });
-          }).catch((error) => {
-            console.error("[Service Worker] Failed to open cache:", error);
-          });
-        }
-        return networkResponse;
-      }).catch((error) => {
-        console.error("[Service Worker] Error fetching:", event.request.url, error);
-        // Optionally, return a fallback response or cache a fallback page
-        return caches.match('/offline.html'); // Example fallback
-      });
-    }).catch((error) => {
-      console.error("[Service Worker] Error matching cache:", error);
-      // Optionally, return a fallback response or cache a fallback page
-      return caches.match('/offline.html'); // Example fallback
+      return fetchAndUpdateCache(event.request);
+    }).catch(() => {
+      return caches.match('/offline.html');
     })
   );
 });
 
-self.addEventListener("message", (event) => {
-  if (event.data.action === "skipWaiting") {
-    self.skipWaiting();
+// Background Sync
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'sync-data') {
+    event.waitUntil(syncData());
   }
 });
 
-
-// Adding A Push Listener to our Service Worker
-
-self.addEventListener('push', (event) => {
-  event.waitUntil(
-    self.registration.showNotification('Notification Title', {
-      body: 'Notification Body Text',
-      icon: 'custom-notification-icon.png',
-    });
-  );
-});
-
-self.addEventListener('notificationclick', (event) => {
-    event.notification.close(); 
-    var fullPath = self.location.origin + event.notification.data.path; 
-    clients.openWindow(fullPath); 
-});
-
-
-// Implement Background Sync
-// Check to make sure Sync is supported.
-if ('serviceWorker' in navigator && 'SyncManager' in window) {
-
-  // Get our service worker registration.
-  const registration = await navigator.serviceWorker.registration;
-
+async function syncData() {
   try {
-    // This is where we request our sync. 
-    // We give it a "tag" to allow for differing sync behavior.
-    await registration.sync.register('database-sync');
-
-  } catch {
-    console.log("Background Sync failed.")
+    const response = await fetch('/sync-data-endpoint');
+    const data = await response.json();
+    console.log('Background sync successful:', data);
+  } catch (err) {
+    console.error('Background sync failed:', err);
   }
 }
 
-// Add an event listener for the `sync` event in your service worker.
-self.addEventListener('sync', event => {
-
-  // Check for correct tag on the sync event.
-  if (event.tag === 'database-sync') {
-
-    // Execute the desired behavior with waitUntil().
-    event.waitUntil(
-
-      // This is just a hypothetical function for the behavior we desire.
-      pushLocalDataToDatabase();
-    );
-    }
-});
-
-
-
-// Implement Periodic Background Sync
-
-// Query the user for permission.
-const periodicSyncPermission = await navigator.permissions.query({
-  name: 'periodic-background-sync',
-});
-
-// Check if permission was properly granted.
-if (periodicSyncPermission.state == 'granted') {
-
-  // Register a new periodic sync.
-  await registration.periodicSync.register('fetch-new-content', {
-    // Set the sync to happen no more than once a day.
-    minInterval: 24 * 60 * 60 * 1000
-  });
-} 
-
-// Listen for the `periodicsync` event.
-self.addEventListener('periodicsync', event => {
-
-  // Check for correct tag on the periodicSyncPermissionsync event.
-  if (event.tag === 'fetch-new-content') {
-
-    // Execute the desired behavior with waitUntil().
-    event.waitUntil(
-
-      // This is just a hypothetical function for the behavior we desire.
-      fetchNewContent();
-    );
+// Periodic Sync (Optional, if supported by the browser)
+self.addEventListener('periodicsync', (event) => {
+  if (event.tag === 'update-content') {
+    event.waitUntil(updateContent());
   }
+});
+
+async function updateContent() {
+  try {
+    const response = await fetch('/update-content-endpoint');
+    const data = await response.json();
+    console.log('Periodic sync successful:', data);
+  } catch (err) {
+    console.error('Periodic sync failed:', err);
+  }
+}
+
+// Push Notifications
+self.addEventListener('push', (event) => {
+  const data = event.data.json();
+  const options = {
+    body: data.body,
+    icon: '/icon.png',
+    badge: '/badge.png',
+  };
+  event.waitUntil(
+    self.registration.showNotification(data.title, options)
+  );
+});
+
+// Utility function to fetch and update cache
+async function fetchAndUpdateCache(request) {
+  try {
+    const networkResponse = await fetch(request);
+    const cache = await caches.open(CACHE_NAME);
+    cache.put(request, networkResponse.clone());
+    return networkResponse;
+  } catch (error) {
+    return caches.match('/offline.html');
+  }
+}
+
+// Push Notification Subscription (Optional, in case you need to subscribe users)
+self.addEventListener('pushsubscriptionchange', (event) => {
+  event.waitUntil(
+    self.registration.pushManager.subscribe(event.oldSubscription.options)
+      .then((newSubscription) => {
+        // Send the new subscription details to the server
+        return fetch('/subscribe', {
+          method: 'POST',
+          body: JSON.stringify(newSubscription),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+      })
+  );
 });
