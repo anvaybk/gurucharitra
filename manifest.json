@@ -247,38 +247,6 @@
       "url": "/pages/videogallery.html"
     }
   ],
-"file_handlers": [
-    {
-      "action": "/open-pdf",
-      "accept": {
-        "application/pdf": [".pdf"]
-      },
-      "icons": [
-        {
-          "src": "images/icon-256x256.png",
-          "sizes": "256x256",
-          "type": "image/png"
-        }
-      ],
-      "launch_type": "single-client"
-    },
-    {
-      "action": "/show-model",
-      "accept": {
-        "application/sla": ".stl",
-        "application/octet-stream": ".fbx"
-      },
-      "icons": [
-        {
-          "src": "images/icon-256x256.png",
-          "sizes": "256x256",
-          "type": "image/png"
-        }
-      ],
-      "launch_type": "multiple-clients"
-    }
-],
-
   "share_target": {
     "action": "/handle-shared-content/",
     "method": "GET",
