@@ -278,5 +278,13 @@
       "launch_type": "multiple-clients"
     }
 
-]
+],
+"share_target": {
+  "action": "/handle-shared-content/",
+  "method": "GET",
+  "params": {
+    "title": "Registration",
+    "url": "registrations.html"
+  }
+}
 }
