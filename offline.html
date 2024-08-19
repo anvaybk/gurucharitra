@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QX3LZYPMB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6QX3LZYPMB');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Shri Gurucharitra Saramrut - श्रीगुरुचरित्र सारामृत: A spiritual website dedicated to Shri Guru Dattatreya. Read the holy text, view images, and start your spiritual journey today.">
+    <meta name="keywords" content="Shri Gurucharitra, श्रीगुरुचरित्र सारामृत, spiritual, Shri Guru Dattatreya, Hinduism, holy text, spirituality">
+    <meta name="author" content="Anvay B Kulkarni">
+    <meta property="og:title" content="Shri Gurucharitra Saramrut - श्रीगुरुचरित्र सारामृत">
+    <meta property="og:description" content="A spiritual website dedicated to Shri Guru Dattatreya. Read the holy text, view images, and start your spiritual journey today.">
+    <meta property="og:image" content="https://anvaybk.github.io/gurucharitra/images/shree_gurucharitra_saramrut.jpg">
+    <meta property="og:url" content="https://anvaybk.github.io/gurucharitra/index.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shri Gurucharitra Saramrut - श्रीगुरुचरित्र सारामृत">
+    <meta name="twitter:description" content="A spiritual website dedicated to Shri Guru Dattatreya. Read the holy text, view images, and start your spiritual journey today.">
+    <meta name="twitter:image" content="https://anvaybk.github.io/gurucharitra/images/shree_gurucharitra_saramrut.jpg">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/homestyles.css">
+ <!--   <link rel="manifest" href="site.webmanifest"> -->
+    <!-- Preload the LCP image with a high fetchpriority so it starts loading with the stylesheet. -->
+    <link rel="preload" fetchpriority="high" as="image" href="images/shree_gurucharitra_saramrut.webp" type="image/webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title> श्रीगुरुचरित्रसारामृत - Offline  </title>
+    <style>
+           button {
+            background-color: orange;
+            padding: 10px 20px;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+        }
+        #install-btn {
+        display: none; /* Hide by default */
+        background-color: orange;
+        padding: 10px 20px;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+ <!-- <button id="install-button" style="display: Yes;"> मोबाईल ॲप इंस्टॉल करा </button> -->
+   <button id="install-button" style="display: none;"> मोबाईल ॲप इंस्टॉल करा </button>
+
+  <script>
+    let deferredPrompt;
+
+    window.addEventListener('beforeinstallprompt', (event) => {
+      // Prevent the default install prompt
+      event.preventDefault();
+      // Save the event for later use
+      deferredPrompt = event;
+      // Show the install button
+      document.getElementById('install-button').style.display = 'block';
+    });
+
+    document.getElementById('install-button').addEventListener('click', () => {
+      // Hide the install button
+      document.getElementById('install-button').style.display = 'none';
+      // Show the install prompt
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    });
+
+    // Register the service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('serviceworker.js').then((registration) => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, (error) => {
+          console.log('ServiceWorker registration failed: ', error);
+        });
+      });
+    }
+  </script>
+	<div class="container-heading" oncontextmenu="return false;">
+        <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
+        <hr>
+        <img src="images/shree_gurucharitra_saramrut.webp" alt="Shri Guri Datta Photo" width="100%" height="auto">
+        <hr>
+        <button onclick="startReading()"> प्रारंभ करण्यासाठी क्लिक करा </button>
+        <hr>
+        <p> </p> <br> <p> </p> <br> <p> </p> <br> <p> </p> 
+<footer>
+        <div class="footer-content">
+        <div> <ul class="social-icons">
+        <li><a href="https://www.facebook.com/ShriKshetraDattadham/" target="_blank">
+			<img src="images/Facebook-Icon-40x40.png" alt="Facebook"></a></li>
+        <li><a href="https://www.instagram.com/shrikshetradattadhamparbhani/" target="_blank">
+			<img src="images/Instagram-Icon-40x40.png" alt="Instagram"></a></li>
+        <li><a href="https://maps.app.goo.gl/iZpJUkdoWsJVRzSP6" target="_blank">
+			<img src="images/Google-maps-Icon-40x40.png" alt="Google Map"></a></li>
+		<li><a href="https://www.whatsapp.com/channel/0029Va5jbowDJ6HAmko3142r" target="_blank">
+			<img src="images/Whatsapp-Icon-40x40.png" alt="WhatsApp"></a></li>
+        <li><a href="https://youtu.be/Bj44CIRHwf4?si=9NvA2wsSI_5WUuRG" target="_blank">
+			<img src="images/YTube-Icon-40x40.png" alt="YouTube"></a></li>
+	</ul>
+	      <p>&copy; 2024 Gurutatvapradeep - All rights reserved.</p>
+        </div>
+    </footer>
+       </div>
+       </div>	
+        <script src="js/script.js" defer></script>
+    </div> 
+
+</body>
+</html>
