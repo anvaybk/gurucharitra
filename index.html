@@ -55,8 +55,11 @@
 <body>
  <!-- <button id="install-button" style="display: Yes;"> मोबाईल ॲप इंस्टॉल करा </button> -->
    <button id="install-button" style="display: none;"> मोबाईल ॲप इंस्टॉल करा </button>
-
+	
   <script>
+   if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('serviceworker.js')
+  }	  
     let deferredPrompt;
 
     window.addEventListener('beforeinstallprompt', (event) => {
