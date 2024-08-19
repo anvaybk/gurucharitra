@@ -249,6 +249,11 @@
   ],
 
   "file_handlers": [
+     {
+      "action": "/open-pdf",
+      "accept": {
+        "application/pdf": [".pdf"]
+      },
     {
       "action": "/open-mp3",
       "accept": {
