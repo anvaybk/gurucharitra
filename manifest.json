@@ -206,20 +206,16 @@
       "auto"
     ]
   },
-  
-   "edge_side_panel": {
+  "edge_side_panel": {
     "preferred_width": 400
   },
-  
   "display_override": [
-  "window-controls-overlay",
-  "standalone",
-  "browser"
-],
-
-"handle_links": "auto",
-  
-"scope_extensions": [
+    "window-controls-overlay",
+    "standalone",
+    "browser"
+  ],
+  "handle_links": "auto",
+  "scope_extensions": [
     {
       "origin": "*.youtube.googleapis.com"
     },
@@ -233,7 +229,6 @@
       "origin": "*.googletagmanager.com"
     }
   ],
- 
   "shortcuts": [
     {
       "name": "Gurucharitra Saramrut",
@@ -241,6 +236,15 @@
       "description": "Gurucharitra Saramrut Granth Vachan"
     }
   ],
-  "iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9"
-  
+  "iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9",
+  "protocol_handlers": [
+    {
+      "protocol": "web+audio",
+      "url": "/pages/audiogallery.html"
+    },
+    {
+      "protocol": "web+video",
+      "url": "/pages/videogallery.html"
+    }
+  ]
 }
