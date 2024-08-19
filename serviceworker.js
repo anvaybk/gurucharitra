@@ -1,134 +1,152 @@
-const staticCacheName = "gurucharitra-v1"; // Use a versioned cache name
-
-self.addEventListener("install", (event) => {
-  console.log("[Service Worker] Installing...");
-
-  // Cache static assets during the install phase
-  event.waitUntil(
-    caches.open(staticCacheName).then((cache) => {
-      return cache.addAll([
-        "/", // Cache the root URL
-        "/index.html", // Cache HTML file
-        "/css/styles.css", // Cache CSS file
-        "/css/homestyles",
-        "/js/script.js", // Cache JavaScript file
-        "/images/shree_gurucharitra_saramrut.jpg",
-        "/images/shree_gurucharitra_saramrut.webp",
-        "/chapters.html",
-        "/home.html",
-        "/registrations.html",
-        "/pages/chapters1.html",
-        "/pages/chapters2.html",
-        "/pages/chapters3.html",
-        "/pages/chapters4.html",
-        "/pages/chapters5.html",
-        "/pages/chapters6.html",
-        "/pages/chapters7.html",
-        "/pages/chapters8.html",
-        "/pages/chapters9.html",
-        "/pages/chapters10.html",
-        "/pages/chapters11.html",
-        "/pages/chapters12.html",
-        "/pages/chapters13.html",
-        "/pages/chapters14.html",
-        "/pages/chapters15.html",
-        "/pages/chapters16.html",
-        "/pages/sankalp.html",
-        "/pages/shreedattamantra.html",
-        "/pages/saptahikparayan.html",
-        "/pages/socialmedia.html",
-        "/pages/annualevents.html",
-        "/pages/videogallery.html",
-        "/pages/audiogallery.html",
-        "/pages/photogallery.html",
-        "/pages/sangeetsevaparayan.html",
-        "/pages/visheshsevaparayan.html",
-        "/pages/granthvachanseva.html",
-        "/pages/kavyarupigurucharitra.html",
-        "/pages/donations.html",
-        "/pages/contactus.html",
-        "/images/YTube-Icon-40x40.png",
-        "/images/Instagram-Icon-40x40.png",
-        "/images/Whatsapp-Icon-40x40.png",
-        "/images/Google-maps-Icon-40x40.png",
-        "/images/Facebook-Icon-40x40.png",
-        "/images/Granth-Vachan-Icon-40x40.png",
-        "/images/Registration-Icon-40x40.png",
-        "/images/Video-Gallery-Icon-40x40.png",
-        "/images/Audio-Gallery-Icon-40x40.png",
-        "/images/Photo-Gallery-Icon-40x40.png",
-        "/images/Social-Media-Icon-40x40.png",
-        "/images/AnnualEvent-Icon-40x40.png",
-        "/images/Donations-Icon-40x40.png",
-        "/images/ContactUs-Icon-40x40.png",
-        "/images/hd-datta_photo1.jpg" // Cache images
-      ]).catch((error) => {
-        console.error("[Service Worker] Failed to cache during install:", error);
-      });
-    }).catch((error) => {
-      console.error("[Service Worker] Failed to open cache:", error);
-    })
-  );
-});
-
-self.addEventListener("activate", (event) => {
-  console.log("[Service Worker] Activating...");
-
-  // Remove old caches
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.filter((cacheName) => {
-          return cacheName.startsWith("gurucharitra-") && cacheName !== staticCacheName;
-        }).map((cacheName) => {
-          return caches.delete(cacheName);
-        })
-      );
-    }).catch((error) => {
-      console.error("[Service Worker] Failed to delete old caches:", error);
-    })
-  );
-});
-
-self.addEventListener("fetch", (event) => {
-  console.log("[Service Worker] Fetching:", event.request.url);
-
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        console.log("[Service Worker] Found in Cache:", event.request.url);
-        return response;
-      }
-
-      console.log("[Service Worker] Not found in Cache. Fetching from network:", event.request.url);
-
-      return fetch(event.request).then((networkResponse) => {
-        if (networkResponse && networkResponse.status === 200) {
-          const responseClone = networkResponse.clone();
-          caches.open(staticCacheName).then((cache) => {
-            cache.put(event.request, responseClone).catch((error) => {
-              console.error("[Service Worker] Failed to cache response:", error);
-            });
-          }).catch((error) => {
-            console.error("[Service Worker] Failed to open cache:", error);
-          });
+{
+  "name": "श्रीगुरुचरित्रसारामृत / Shri Gurucharitra Saramrut",
+  "id": "/gurucharitra/",
+  "short_name": "Gurucharitra",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#a52a2a",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "description": "श्रीगुरुचरित्रसारामृत - Shri Gurucharitra Saramrut",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "images/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "images/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/icon-1280x720.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "platform": "wide"
+    },
+    {
+      "src": "images/screenshot-540x720.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "images/screenshot-400x858.png",
+      "type": "image/png",
+      "platform": "narrow",
+      "sizes": "400x858"
+    },
+    {
+      "src": "images/screenshot-720x540.png",
+      "type": "image/png",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ],
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "windows",
+      "url": "https://anvaybk.github.io/gurucharitra",
+      "id": "gurucharitra"
+    },
+    {
+      "platform": "play",
+      "url": "https://anvaybk.github.io/gurucharitra/",
+      "id": "gurucharitra.saramrut"
+    }
+  ],
+  "dir": "ltr",
+  "lang": "en",
+  "update_via_cache": "all",
+  "categories": [
+    "books",
+    "productivity"
+  ],
+  "launch_handler": {
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
+  },
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "display_override": [
+    "standalone",
+    "browser"
+  ],
+  "handle_links": "auto",
+  "scope_extensions": [
+    {
+      "origin": "*.youtube.googleapis.com"
+    },
+    {
+      "origin": "drive.google.com"
+    },
+    {
+      "origin": "*.play.google.com"
+    },
+    {
+      "origin": "*.googletagmanager.com"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Gurucharitra Saramrut",
+      "url": "https://anvaybk.github.io/gurucharitra/chapters.html",
+      "description": "Gurucharitra Saramrut Granth Vachan"
+    }
+  ],
+  "iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9",
+  "protocol_handlers": [
+    {
+      "protocol": "web+audio",
+      "url": "/pages/audiogallery.html"
+    },
+    {
+      "protocol": "web+video",
+      "url": "/pages/videogallery.html"
+    }
+  ],
+  "share_target": {
+    "action": "/handle-shared-content/",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "file_handlers": {
+    "files": [
+      {
+        "name": "MP3 files",
+        "accept": {
+          "audio/mpeg": [".mp3"]
         }
-        return networkResponse;
-      }).catch((error) => {
-        console.error("[Service Worker] Error fetching:", event.request.url, error);
-        // Optionally, return a fallback response or cache a fallback page
-        return caches.match('/offline.html'); // Example fallback
-      });
-    }).catch((error) => {
-      console.error("[Service Worker] Error matching cache:", error);
-      // Optionally, return a fallback response or cache a fallback page
-      return caches.match('/offline.html'); // Example fallback
-    })
-  );
-});
-
-self.addEventListener("message", (event) => {
-  if (event.data.action === "skipWaiting") {
-    self.skipWaiting();
-  }
-});
+      },
+      {
+        "name": "MP4 videos",
+        "accept": {
+          "video/mp4": [".mp4"]
+        }
+      }
+    ]
+  },
+  "widgets": [
+    {
+      "src": "images/widget.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "description": "A widget to quickly access the chapters",
+      "title": "Gurucharitra Chapters"
+    }
+  ]
+}
