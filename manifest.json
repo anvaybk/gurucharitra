@@ -247,25 +247,13 @@
       "url": "/pages/videogallery.html"
     }
   ],
-
   "file_handlers": [
-     {
-      "action": "/open-pdf",
-      "accept": {
-        "application/pdf": [".pdf"]
-      },
-      "icons": [
-        {
-          "src": "images/icon-256x256.png",
-          "sizes": "256x256",
-          "type": "image/png"
-        }
-      ],
-       
     {
       "action": "/open-mp3",
       "accept": {
-        "application/mp3": [".mp3"]
+        "application/mp3": [
+          ".mp3"
+        ]
       },
       "icons": [
         {
@@ -276,10 +264,10 @@
       ],
       "launch_type": "multiple-clients"
     },
-   {
+    {
       "action": "/open-mp4",
       "accept": {
-        "application/mp4": ".mp4" 
+        "application/mp4": ".mp4"
       },
       "icons": [
         {
@@ -290,14 +278,13 @@
       ],
       "launch_type": "multiple-clients"
     }
-
-],
-"share_target": {
-  "action": "/handle-shared-content/",
-  "method": "GET",
-  "params": {
-    "title": "Registration",
-    "url": "registrations.html"
+  ],
+  "share_target": {
+    "action": "/handle-shared-content/",
+    "method": "GET",
+    "params": {
+      "title": "Registration",
+      "url": "registrations.html"
+    }
   }
-}
 }
