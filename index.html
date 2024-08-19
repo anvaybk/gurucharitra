@@ -54,8 +54,9 @@
 </head>
 <body>
  <!-- <button id="install-button" style="display: Yes;"> मोबाईल ॲप इंस्टॉल करा </button> -->
-   <button id="install-button" style="display: none;"> मोबाईल ॲप इंस्टॉल करा </button>
-	
+<!--   <button id="install-button" style="display: none;"> मोबाईल ॲप इंस्टॉल करा </button>
+
+
   <script>
    if (typeof navigator.serviceWorker !== 'undefined') {
     navigator.serviceWorker.register('serviceworker.js')
@@ -98,7 +99,43 @@
         });
       });
     }
-  </script>
+  </script> -->
+
+<button id="install-btn" style="display: none;">Install App</button>
+    
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js')
+                .then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+
+        let deferredPrompt;
+        
+        // Listen for the install prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.getElementById('install-btn').style.display = 'block';
+        });
+
+        // Handle the install prompt
+        document.getElementById('install-btn').addEventListener('click', () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                }
+                deferredPrompt = null;
+            });
+        });
+    </script>	
+	
+	
 	<div class="container-heading" oncontextmenu="return false;">
         <h1> 卐 || श्रीगुरुचरित्रसारामृत ||  卐 </h1>
         <hr>
