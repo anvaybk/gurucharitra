@@ -187,5 +187,29 @@
   "categories": [
     "books",
     "productivity"
-  ]	
+  ],
+  "related_applications": [
+  {
+    "platform": "windows",
+    "url": "https://anvaybk.github.io/gurucharitra",
+    "id": "gurucharitra"
+  },
+  {
+    "platform": "play",
+    "url": "https://anvaybk.github.io/gurucharitra/"
+  }
+],
+"launch_handler": {
+    "client_mode": "navigate-existing"
+},
+"launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+},
+"iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9",
+"scope_extensions": [
+    {"origin": "*.youtube.googleapis.com"},
+    {"origin": "drive.google.com"},
+    {"origin": "*.play.google.com"},
+	{"origin": "*.googletagmanager.com"},
+  ],
 }
