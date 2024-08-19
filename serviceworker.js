@@ -4,8 +4,8 @@ const CACHE_EXPIRY = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
-    '/styles.css',
-    '/app.js',
+    '/css/styles.css',
+    '/js/script.js',
     '/images/icon-192x192.png',
     '/images/icon-512x512.png',
     OFFLINE_URL
