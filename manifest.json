@@ -96,7 +96,7 @@
       "type": "image/png",
       "sizes": "384x384"
     },
-     {
+    {
       "src": "images/icon-493x847.png",
       "type": "image/png",
       "sizes": "493x847"
@@ -139,7 +139,7 @@
     {
       "src": "images/icon-1224x924.png",
       "type": "image/png",
-      "purpose": "any",	    
+      "purpose": "any",
       "sizes": "1224x924"
     },
     {
@@ -159,7 +159,7 @@
       "type": "image/png",
       "sizes": "1280x720",
       "platform": "wide"
-    },	  
+    },
     {
       "src": "images/screenshot-540x720.png",
       "type": "image/png",
@@ -169,9 +169,9 @@
     {
       "src": "images/screenshot-400x858.png",
       "type": "image/png",
-       "platform": "narrow",	    
+      "platform": "narrow",
       "sizes": "400x858"
-     },	  
+    },
     {
       "src": "images/screenshot-720x540.png",
       "type": "image/png",
@@ -179,7 +179,7 @@
       "form_factor": "wide"
     }
   ],
-  "prefer_related_applications": false,
+  "prefer_related_applications": true,
   "dir": "ltr",
   "lang": "en",
   "update_via_cache": "all",
@@ -189,26 +189,47 @@
     "productivity"
   ],
   "related_applications": [
-  {
-    "platform": "windows",
-    "url": "https://anvaybk.github.io/gurucharitra",
-    "id": "gurucharitra"
+    {
+      "platform": "windows",
+      "url": "https://anvaybk.github.io/gurucharitra",
+      "id": "gurucharitra"
+    },
+    {
+      "platform": "play",
+      "url": "https://anvaybk.github.io/gurucharitra/",
+      "id": "gurucharitra.saramrut"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": [
+      "navigate-existing",
+      "auto"
+    ]
   },
-  {
-    "platform": "play",
-    "url": "https://anvaybk.github.io/gurucharitra/"
-  }
-],
-"launch_handler": {
-    "client_mode": "navigate-existing"
-},
-"launch_handler": {
-    "client_mode": ["navigate-existing", "auto"]
-},
-"scope_extensions": [
-    {"origin": "*.youtube.googleapis.com"},
-    {"origin": "drive.google.com"},
-    {"origin": "*.play.google.com"},
-    {"origin": "*.googletagmanager.com"}
-  ]
+  "scope_extensions": [
+    {
+      "origin": "*.youtube.googleapis.com"
+    },
+    {
+      "origin": "drive.google.com"
+    },
+    {
+      "origin": "*.play.google.com"
+    },
+    {
+      "origin": "*.googletagmanager.com"
+    }
+  ],
+  "display_override": [
+    "window-controls-overlay",
+    "standalone"
+  ],
+  "shortcuts": [
+    {
+      "name": "Gurucharitra Saramrut",
+      "url": "https://anvaybk.github.io/gurucharitra/chapters.html",
+      "description": "Gurucharitra Saramrut Granth Vachan"
+    }
+  ],
+  "iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9"
 }
