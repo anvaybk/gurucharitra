@@ -209,6 +209,6 @@
     {"origin": "*.youtube.googleapis.com"},
     {"origin": "drive.google.com"},
     {"origin": "*.play.google.com"},
-	{"origin": "*.googletagmanager.com"},
+    {"origin": "*.googletagmanager.com"}
   ]
 }
