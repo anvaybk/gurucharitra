@@ -103,6 +103,11 @@
 
 	<button id="install-btn" style="display: none;">Install App</button>
  <script>
+	if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('/serviceworker.js')
+  
+</script>
+	 
         // Register service worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/serviceworker.js')
