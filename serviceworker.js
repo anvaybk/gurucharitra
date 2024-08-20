@@ -130,33 +130,32 @@ self.addEventListener("message", (event) => {
   }
 });
 
-// Check to make sure Sync is supported.
-if ('serviceWorker' in navigator && 'SyncManager' in window) {
+// Query the user for permission.
+const periodicSyncPermission = await navigator.permissions.query({
+  name: 'periodic-background-sync',
+});
 
-  // Get our service worker registration.
-  const registration = await navigator.serviceWorker.registration;
+// Check if permission was properly granted.
+if (periodicSyncPermission.state == 'granted') {
 
-  try {
-    // This is where we request our sync. 
-    // We give it a "tag" to allow for differing sync behavior.
-    await registration.sync.register('database-sync');
+  // Register a new periodic sync.
+  await registration.periodicSync.register('fetch-new-content', {
+    // Set the sync to happen no more than once a day.
+    minInterval: 24 * 60 * 60 * 1000
+  });
+} 
 
-  } catch {
-    console.log("Background Sync failed.")
-  }
-}
+// Listen for the `periodicsync` event.
+self.addEventListener('periodicsync', event => {
 
-// Add an event listener for the `sync` event in your service worker.
-self.addEventListener('sync', event => {
-
-  // Check for correct tag on the sync event.
-  if (event.tag === 'database-sync') {
+  // Check for correct tag on the periodicSyncPermissionsync event.
+  if (event.tag === 'fetch-new-content') {
 
     // Execute the desired behavior with waitUntil().
     event.waitUntil(
 
       // This is just a hypothetical function for the behavior we desire.
-      pushLocalDataToDatabase();
+      fetchNewContent();
     );
-    }
+  }
 });
