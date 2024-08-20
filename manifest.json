@@ -210,7 +210,8 @@
   },
   "display_override": [
     "standalone",
-    "browser"
+    "browser",
+    "window-controls-overlay"
   ],
   "handle_links": "auto",
   "scope_extensions": [
