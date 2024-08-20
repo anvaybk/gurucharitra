@@ -1,106 +1,131 @@
-const CACHE_NAME = 'gurucharitra-cache-v1';
-const OFFLINE_URL = 'offline.html';
-const CACHE_EXPIRY = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
-const ASSETS_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/css/styles.css',
-    '/js/script.js',
-    '/images/icon-192x192.png',
-    '/images/icon-512x512.png',
-    OFFLINE_URL
-];
+const staticCacheName = "gurucharitra-v1"; // Use a versioned cache name
 
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(ASSETS_TO_CACHE))
-            .then(self.skipWaiting())
-    );
+self.addEventListener("install", (event) => {
+  console.log("[Service Worker] Installing...");
+
+  // Cache static assets during the install phase
+  event.waitUntil(
+    caches.open(staticCacheName).then((cache) => {
+      return cache.addAll([
+        "/", // Cache the root URL
+        "/index.html", // Cache HTML file
+        "/css/styles.css", // Cache CSS file
+        "/css/homestyles",
+        "/js/script.js", // Cache JavaScript file
+        "/images/shree_gurucharitra_saramrut.jpg",
+        "/images/shree_gurucharitra_saramrut.webp",
+        "/chapters.html",
+        "/home.html",
+        "/pages/chapters1.html",
+        "/pages/chapters2.html",
+        "/pages/chapters3.html",
+        "/pages/chapters4.html",
+        "/pages/chapters5.html",
+        "/pages/chapters6.html",
+        "/pages/chapters7.html",
+        "/pages/chapters8.html",
+        "/pages/chapters9.html",
+        "/pages/chapters10.html",
+        "/pages/chapters11.html",
+        "/pages/chapters12.html",
+        "/pages/chapters13.html",
+        "/pages/chapters14.html",
+        "/pages/chapters15.html",
+        "/pages/chapters16.html",
+        "/pages/sankalp.html",
+        "/pages/shreedattamantra.html",
+        "/pages/saptahikparayan.html",
+        "/pages/socialmedia.html",
+        "/pages/annualevents.html",
+        "/pages/videogallery.html",
+        "/pages/audiogallery.html",
+        "/pages/photogallery.html",
+        "/pages/sangeetsevaparayan.html",
+        "/pages/visheshsevaparayan.html",
+        "/pages/granthvachanseva.html",
+        "/pages/donations.html",
+        "/images/YTube-Icon-40x40.png",
+        "/images/Instagram-Icon-40x40.png",
+        "/images/Whatsapp-Icon-40x40.png",
+        "/images/Google-maps-Icon-40x40.png",
+        "/images/Facebook-Icon-40x40.png",
+        "/images/Granth-Vachan-Icon-40x40.png",
+        "/images/Registration-Icon-40x40.png",
+        "/images/Video-Gallery-Icon-40x40.png",
+        "/images/Audio-Gallery-Icon-40x40.png",
+        "/images/Photo-Gallery-Icon-40x40.png",
+        "/images/Social-Media-Icon-40x40.png",
+        "/images/AnnualEvent-Icon-40x40.png",
+        "/images/Donations-Icon-40x40.png",
+        "/images/ContactUs-Icon-40x40.png",
+        "/images/hd-datta_photo1.jpg" // Cache images
+      ]).catch((error) => {
+        console.error("[Service Worker] Failed to cache during install:", error);
+      });
+    }).catch((error) => {
+      console.error("[Service Worker] Failed to open cache:", error);
+    })
+  );
 });
 
-self.addEventListener('activate', event => {
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cache => {
-                    if (cache !== CACHE_NAME) {
-                        return caches.delete(cache);
-                    }
-                })
-            );
-        }).then(() => self.clients.claim())
-    );
-});
+self.addEventListener("activate", (event) => {
+  console.log("[Service Worker] Activating...");
 
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request).then(response => {
-            return response || fetch(event.request).catch(() => caches.match(OFFLINE_URL));
+  // Remove old caches
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.filter((cacheName) => {
+          return cacheName.startsWith("gurucharitra-") && cacheName !== staticCacheName;
+        }).map((cacheName) => {
+          return caches.delete(cacheName);
         })
-    );
+      );
+    }).catch((error) => {
+      console.error("[Service Worker] Failed to delete old caches:", error);
+    })
+  );
 });
 
-self.addEventListener('sync', event => {
-    if (event.tag === 'sync-content') {
-        event.waitUntil(syncContent());
-    }
-});
+self.addEventListener("fetch", (event) => {
+  console.log("[Service Worker] Fetching:", event.request.url);
 
-async function syncContent() {
-    // Logic for syncing content goes here
-    console.log('Syncing content...');
-}
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      if (response) {
+        console.log("[Service Worker] Found in Cache:", event.request.url);
+        return response;
+      }
 
-self.addEventListener('periodicsync', event => {
-    if (event.tag === 'periodic-sync-content') {
-        event.waitUntil(syncContent());
-    }
-});
+      console.log("[Service Worker] Not found in Cache. Fetching from network:", event.request.url);
 
-self.addEventListener('push', event => {
-    const options = {
-        body: event.data ? event.data.text() : 'Push message no payload',
-        icon: '/images/icon-192x192.png',
-        badge: '/images/icon-192x192.png'
-    };
-    event.waitUntil(
-        self.registration.showNotification('Gurucharitra Notification', options)
-    );
-});
-
-self.addEventListener('message', event => {
-    if (event.data && event.data.type === 'CACHE_CLEANUP') {
-        cacheCleanup();
-    }
-});
-
-async function cacheCleanup() {
-    const cache = await caches.open(CACHE_NAME);
-    const requests = await cache.keys();
-    const now = Date.now();
-
-    requests.forEach(async request => {
-        const response = await cache.match(request);
-        const dateHeader = response.headers.get('date');
-        if (dateHeader) {
-            const date = new Date(dateHeader);
-            if ((now - date.getTime()) > CACHE_EXPIRY) {
-                await cache.delete(request);
-            }
+      return fetch(event.request).then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+          caches.open(staticCacheName).then((cache) => {
+            cache.put(event.request, responseClone).catch((error) => {
+              console.error("[Service Worker] Failed to cache response:", error);
+            });
+          }).catch((error) => {
+            console.error("[Service Worker] Failed to open cache:", error);
+          });
         }
-    });
-}
-
-self.addEventListener('periodicsync', event => {
-    if (event.tag === 'cleanup-cache') {
-        event.waitUntil(cacheCleanup());
-    }
+        return networkResponse;
+      }).catch((error) => {
+        console.error("[Service Worker] Error fetching:", event.request.url, error);
+        // Optionally, return a fallback response or cache a fallback page
+        return caches.match('/offline.html'); // Example fallback
+      });
+    }).catch((error) => {
+      console.error("[Service Worker] Error matching cache:", error);
+      // Optionally, return a fallback response or cache a fallback page
+      return caches.match('/offline.html'); // Example fallback
+    })
+  );
 });
 
-self.addEventListener('notificationclick', event => {
-    event.notification.close();
-    event.waitUntil(
-        clients.openWindow('/')
-    );
+self.addEventListener("message", (event) => {
+  if (event.data.action === "skipWaiting") {
+    self.skipWaiting();
+  }
 });
