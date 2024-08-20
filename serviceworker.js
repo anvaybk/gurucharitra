@@ -129,33 +129,3 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
-
-// Query the user for permission.
-const periodicSyncPermission = await navigator.permissions.query({
-  name: 'periodic-background-sync',
-});
-
-// Check if permission was properly granted.
-if (periodicSyncPermission.state == 'granted') {
-
-  // Register a new periodic sync.
-  await registration.periodicSync.register('fetch-new-content', {
-    // Set the sync to happen no more than once a day.
-    minInterval: 24 * 60 * 60 * 1000
-  });
-} 
-
-// Listen for the `periodicsync` event.
-self.addEventListener('periodicsync', event => {
-
-  // Check for correct tag on the periodicSyncPermissionsync event.
-  if (event.tag === 'fetch-new-content') {
-
-    // Execute the desired behavior with waitUntil().
-    event.waitUntil(
-
-      // This is just a hypothetical function for the behavior we desire.
-      fetchNewContent();
-    );
-  }
-});
