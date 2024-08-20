@@ -129,3 +129,34 @@ self.addEventListener("message", (event) => {
     self.skipWaiting();
   }
 });
+
+// Check to make sure Sync is supported.
+if ('serviceWorker' in navigator && 'SyncManager' in window) {
+
+  // Get our service worker registration.
+  const registration = await navigator.serviceWorker.registration;
+
+  try {
+    // This is where we request our sync. 
+    // We give it a "tag" to allow for differing sync behavior.
+    await registration.sync.register('database-sync');
+
+  } catch {
+    console.log("Background Sync failed.")
+  }
+}
+
+// Add an event listener for the `sync` event in your service worker.
+self.addEventListener('sync', event => {
+
+  // Check for correct tag on the sync event.
+  if (event.tag === 'database-sync') {
+
+    // Execute the desired behavior with waitUntil().
+    event.waitUntil(
+
+      // This is just a hypothetical function for the behavior we desire.
+      pushLocalDataToDatabase();
+    );
+    }
+});
