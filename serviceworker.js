@@ -1,4 +1,4 @@
-const staticCacheName = "gurucharitra-v1"; // Use a versioned cache name
+const staticCacheName = "gurucharitra-v1.0.0.0"; // Use a versioned cache name
 
 self.addEventListener("install", (event) => {
   console.log("[Service Worker] Installing...");
