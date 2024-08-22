@@ -31,7 +31,7 @@ nav.menu {
 }
 
 nav.menu .menu-item {
-    background-color: white;
+    background-color: floralwhite;  /* Last it was white */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin: 10px;
@@ -67,7 +67,7 @@ main .content {
 
 footer {
     background-color: brown; /* maroon */
-    color: white;
+    color: white;  
     padding: 20px 0;
     text-align: center;
 }
