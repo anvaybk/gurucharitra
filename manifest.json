@@ -5,10 +5,15 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#a52a2a",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "scope": "/",
   "description": "श्रीगुरुचरित्रसारामृत - Shri Gurucharitra Saramrut",
+  "version": "1.0.0.0",
   "theme_color": "#000000",
+   "developer": {
+    "name": "Anvay B Kulkarni",
+    "url": "https://anvaybk.github.io/gurucharitra/"
+  },
   "icons": [
     {
       "src": "images/icon-16x16.png",
@@ -188,8 +193,8 @@
     },
     {
       "platform": "play",
-      "url": "https://anvaybk.github.io/gurucharitra/",
-      "id": "gurucharitra.saramrut"
+      "url": "https://play.google.com/store/apps/details?id=io.github.anvaybk.gurucharitra.twa",
+      "id": "io.github.anvaybk.gurucharitra.twa"
     }
   ],
   "dir": "ltr",
@@ -211,6 +216,7 @@
   "display_override": [
     "standalone",
     "browser",
+    "minimal-ui",
     "window-controls-overlay"
   ],
   "handle_links": "auto",
