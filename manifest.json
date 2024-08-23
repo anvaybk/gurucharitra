@@ -1,5 +1,5 @@
 {
-  "name": "श्रीगुरुचरित्रसारामृत / Shri Gurucharitra Saramrut",
+  "name": "Gurucharitra Saramrut",
   "id": "/gurucharitra/",
   "short_name": "Gurucharitra",
   "start_url": ".",
@@ -7,7 +7,7 @@
   "background_color": "#a52a2a",
   "orientation": "any",
   "scope": "/",
-  "description": "श्रीगुरुचरित्रसारामृत - Shri Gurucharitra Saramrut",
+  "description": "श्रीगुरुचरित्रसारामृत - Shri Gurucharitra Saramrut. Welcome to the Gurucharitra Saramrut online portal, the ultimate destination for in-depth exploration of the sacred texts and associated services of Gurucharitra. Our platform offers a well-organized collection of the Gurucharitra Saramrut and detailed information on various Parayan Sevas, including the Sapthahik (weekly)  and Vishesh (special) Paryan Sevas.",
   "version": "1.0.0.0",
   "theme_color": "#000000",
    "developer": {
