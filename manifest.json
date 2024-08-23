@@ -242,16 +242,6 @@
     }
   ],
   "iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9",
-  "protocol_handlers": [
-    {
-      "protocol": "web+audio",
-      "url": "/pages/audiogallery.html"
-    },
-    {
-      "protocol": "web+video",
-      "url": "/pages/videogallery.html"
-    }
-  ],
   "share_target": {
     "action": "/handle-shared-content/",
     "method": "POST",
@@ -261,22 +251,6 @@
       "text": "text",
       "url": "url"
     }
-  },
-  "file_handlers": {
-    "files": [
-      {
-        "name": "MP3 files",
-        "accept": {
-          "audio/mpeg": [".mp3"]
-        }
-      },
-      {
-        "name": "MP4 videos",
-        "accept": {
-          "video/mp4": [".mp4"]
-        }
-      }
-    ]
   },
   "widgets": [
     {
