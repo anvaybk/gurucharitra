@@ -7,7 +7,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f0f0;
-	user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .container {
@@ -119,7 +120,8 @@ h1 {
 	font-size: 24px;
 	text-align: center;
 	font-weight: bold;
-	user-select: none	
+	user-select: none;
+	-webkit-user-select: none;
 }
 
 
@@ -184,7 +186,8 @@ footer {
 	font-size: 22px;
 	text-align: center;
 	font-weight: bold;
-	user-select: none
+	user-select: none;
+	-webkit-user-select: none;
 }
 
 table {
