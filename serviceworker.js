@@ -112,26 +112,7 @@ self.addEventListener('fetch', event => {
         // Otherwise, go to the network
           return fetch(event.request)
       }
-  });
-});
-
-
-
-
-// Define Fetch Strategy
-self.addEventListener("fetch", (event) => {
-  console.log("[Service Worker] Fetching:", event.request.url);
-
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        console.log("[Service Worker] Found in Cache:", event.request.url);
-        return response;
-      }
-
-      console.log("[Service Worker] Not found in Cache. Fetching from network:", event.request.url);
-
-      return fetch(event.request).then((networkResponse) => {
+         return fetch(event.request).then((networkResponse) => {
         if (networkResponse && networkResponse.status === 200) {
           const responseClone = networkResponse.clone();
           caches.open(staticCacheName).then((cache) => {
@@ -153,10 +134,9 @@ self.addEventListener("fetch", (event) => {
       // Optionally, return a fallback response or cache a fallback page
       return caches.match('offline.html'); // Example fallback
     })
-  );
-});
+  });
 
-
+        
 self.addEventListener("message", (event) => {
   if (event.data.action === "skipWaiting") {
     self.skipWaiting();
