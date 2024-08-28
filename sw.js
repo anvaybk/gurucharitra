@@ -52,3 +52,30 @@ self.addEventListener('fetch', (event) => {
     })());
   }
 });
+
+// The following asynchronous function registers a background sync from a browsing context
+async function syncMessagesLater() {
+  const registration = await navigator.serviceWorker.ready;
+  try {
+    await registration.sync.register("sync-messages");
+  } catch {
+    console.log("Background Sync could not be registered!");
+  }
+}
+
+// This code checks to see if a background sync task with a given tag is registered
+navigator.serviceWorker.ready.then((registration) => {
+  registration.sync.getTags().then((tags) => {
+    if (tags.includes("sync-messages")) {
+      console.log("Messages sync already requested");
+    }
+  });
+});
+
+// The following example shows how to respond to a background sync event in the service worker.
+self.addEventListener("sync", (event) => {
+  if (event.tag === "sync-messages") {
+    event.waitUntil(sendOutboxMessages());
+  }
+});
+
