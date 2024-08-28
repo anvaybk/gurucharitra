@@ -1,12 +1,7 @@
 const staticCacheName = "gurucharitra-v1.0.0.0"; // Use a versioned cache name
 
-self.addEventListener("install", (event) => {
-  console.log("[Service Worker] Installing...");
-
-  // Cache static assets during the install phase
-  event.waitUntil(
-    caches.open(staticCacheName).then((cache) => {
-      return cache.addAll([
+// Add whichever assets you want to pre-cache here:
+const PRECACHE_ASSETS = [
         "/", // Cache the root URL
         "/index.html", // Cache HTML file
         "/css/styles.css", // Cache CSS file
@@ -59,7 +54,15 @@ self.addEventListener("install", (event) => {
         "/images/Donations-Icon-40x40.png",
         "/images/ContactUs-Icon-40x40.png",
         "/images/hd-datta_photo1.jpg" // Cache images
-      ]).catch((error) => {
+  ]
+
+
+  // Cache static assets during the install phase
+  self.addEventListener('install', event => {
+    console.log("[Service Worker] Installing...");
+    event.waitUntil((async () => {
+        const cache = await caches.open(staticCacheName);
+        cache.addAll(PRECACHE_ASSETS).catch((error) => {
         console.error("[Service Worker] Failed to cache during install:", error);
       });
     }).catch((error) => {
@@ -68,10 +71,15 @@ self.addEventListener("install", (event) => {
   );
 });
 
-self.addEventListener("activate", (event) => {
-  console.log("[Service Worker] Activating...");
 
-  // Remove old caches
+// Claiming Clients During the Activate Event
+self.addEventListener("activate", (event) => {
+  event.waitUntil(self.clients.claim());
+  console.log("[Service Worker] Activating...");
+  });
+
+
+ // Remove old caches
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
@@ -87,6 +95,30 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+// Add Fetch Event
+self.addEventListener('fetch', event => {
+  console.log("[Service Worker] Fetching:", event.request.url);
+  event.respondWith(async () => {
+      const cache = await caches.open(staticCacheName);
+
+      // match the request to our cache
+      const cachedResponse = await cache.match(event.request);
+
+      // check if we got a valid response
+      if (cachedResponse !== undefined) {
+          // Cache hit, return the resource
+          return cachedResponse;
+      } else {
+        // Otherwise, go to the network
+          return fetch(event.request)
+      };
+  });
+});
+
+
+
+
+// Define Fetch Strategy
 self.addEventListener("fetch", (event) => {
   console.log("[Service Worker] Fetching:", event.request.url);
 
@@ -114,15 +146,16 @@ self.addEventListener("fetch", (event) => {
       }).catch((error) => {
         console.error("[Service Worker] Error fetching:", event.request.url, error);
         // Optionally, return a fallback response or cache a fallback page
-        return caches.match('/offline.html'); // Example fallback
+        return caches.match('offline.html'); // Example fallback
       });
     }).catch((error) => {
       console.error("[Service Worker] Error matching cache:", error);
       // Optionally, return a fallback response or cache a fallback page
-      return caches.match('/offline.html'); // Example fallback
+      return caches.match('offline.html'); // Example fallback
     })
   );
 });
+
 
 self.addEventListener("message", (event) => {
   if (event.data.action === "skipWaiting") {
