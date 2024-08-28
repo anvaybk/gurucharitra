@@ -90,7 +90,7 @@ self.addEventListener("activate", (event) => {
         })
       );
     }).catch((error) => {
-      console.error("[Service Worker] Failed to delete old caches:", error);
+    //  console.error("[Service Worker] Failed to delete old caches:", error);
     })
   );
 
@@ -127,12 +127,12 @@ self.addEventListener('fetch', event => {
       }).catch((error) => {
         console.error("[Service Worker] Error fetching:", event.request.url, error);
         // Optionally, return a fallback response or cache a fallback page
-        return caches.match('offline.html'); // Example fallback
+        return caches.match('/offline.html'); // Example fallback
       });
     }).catch((error) => {
       console.error("[Service Worker] Error matching cache:", error);
       // Optionally, return a fallback response or cache a fallback page
-      return caches.match('offline.html'); // Example fallback
+      return caches.match('/offline.html'); // Example fallback
     })
   });
 
