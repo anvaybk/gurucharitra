@@ -67,7 +67,7 @@ const PRECACHE_ASSETS = [
       });
     }).catch((error) => {
       console.error("[Service Worker] Failed to open cache:", error);
-    });
+    })
   );
 });
 
