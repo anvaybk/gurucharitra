@@ -111,7 +111,7 @@ self.addEventListener('fetch', event => {
       } else {
         // Otherwise, go to the network
           return fetch(event.request)
-      };
+      }
   });
 });
 
