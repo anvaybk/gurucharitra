@@ -67,7 +67,7 @@ const PRECACHE_ASSETS = [
       });
     }).catch((error) => {
       console.error("[Service Worker] Failed to open cache:", error);
-    })
+    });
   );
 });
 
@@ -93,7 +93,7 @@ self.addEventListener("activate", (event) => {
       console.error("[Service Worker] Failed to delete old caches:", error);
     })
   );
-});
+
 
 // Add Fetch Event
 self.addEventListener('fetch', event => {
