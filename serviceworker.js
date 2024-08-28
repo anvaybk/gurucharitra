@@ -24,7 +24,8 @@
          'drive.google.com',
          'play.google.com', 
          'googletagmanager.com', 
-         'api.google.com',   
+         'api.google.com', 
+          'storage.googleapis.com',
         'cdn.jsdelivr.net'
     ]
 
