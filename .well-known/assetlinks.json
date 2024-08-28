@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "io.github.anvaybk.gurucharitra.twa",
-        "sha256_cert_fingerprints": ["C7:37:A6:60:68:EF:32:9C:B6:0C:8D:AF:5C:26:3B:37:FE:5C:8E:3B:33:2E:89:B0:9F:59:BC:5C:94:EF:C6:E4"]
+        "sha256_cert_fingerprints": ["B6:C3:E4:F6:27:BE:90:0B:E0:B8:FD:79:78:B1:32:38:F6:CF:79:32:80:65:A6:0A:73:34:59:D8:C2:80:47:95"]
       }
     }]
