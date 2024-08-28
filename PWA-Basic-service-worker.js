@@ -21,6 +21,11 @@
         self.location.hostname,
         'fonts.gstatic.com',
         'fonts.googleapis.com',
+         'drive.google.com',
+         'play.google.com', 
+         'googletagmanager.com', 
+         'api.google.com', 
+          'storage.googleapis.com',
         'cdn.jsdelivr.net'
     ]
 
