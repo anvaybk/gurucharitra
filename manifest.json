@@ -252,4 +252,29 @@
       "url": "url"
     }
   }
+   "file_handlers": {
+    "files": [
+      {
+        "name": "MP3 files",
+        "accept": {
+          "audio/mpeg": [".mp3"]
+        }
+      },
+      {
+        "name": "MP4 videos",
+        "accept": {
+          "video/mp4": [".mp4"]
+        }
+      }
+    ]
+  },
+  "widgets": [
+    {
+      "src": "images/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "description": "A widget to quickly access the chapters",
+      "title": "Gurucharitra Chapters"
+    }
+  ]
 }
