@@ -94,6 +94,11 @@
         });
       });
     }
+
+   // Additional code for service worker
+	 if (typeof navigator.serviceWorker !== 'undefined') {
+    navigator.serviceWorker.register('serviceworker.js')
+  }
   </script> 
 
 	
