@@ -2,7 +2,7 @@
 
 const CACHE_NAME = 'gurucharitra-v1.0.0.0';
 const INITIAL_CACHED_RESOURCES = [
-        "/", // Cache the root URL
+        "/gurucharitra", // Cache the root URL
         "/index.html", // Cache HTML file
         "/css/styles.css", // Cache CSS file
         "/css/homestyles",
