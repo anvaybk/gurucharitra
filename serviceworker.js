@@ -1,98 +1,185 @@
+// Last updated on 28082024
 
-    // Based off of https://github.com/pwa-builder/PWABuilder/blob/main/docs/sw.js
+const CACHE_NAME = 'gurucharitra-v1.0.0.0';
+const INITIAL_CACHED_RESOURCES = [
+        "/", // Cache the root URL
+        "/index.html", // Cache HTML file
+        "/css/styles.css", // Cache CSS file
+        "/css/homestyles",
+        "/js/script.js", // Cache JavaScript file
+        "/images/shree_gurucharitra_saramrut.jpg",
+        "/images/shree_gurucharitra_saramrut.webp",
+        "/chapters.html",
+        "/home.html",
+        "/pages/chapters1.html",
+        "/pages/chapters2.html",
+        "/pages/chapters3.html",
+        "/pages/chapters4.html",
+        "/pages/chapters5.html",
+        "/pages/chapters6.html",
+        "/pages/chapters7.html",
+        "/pages/chapters8.html",
+        "/pages/chapters9.html",
+        "/pages/chapters10.html",
+        "/pages/chapters11.html",
+        "/pages/chapters12.html",
+        "/pages/chapters13.html",
+        "/pages/chapters14.html",
+        "/pages/chapters15.html",
+        "/pages/chapters16.html",
+        "/pages/sankalp.html",
+        "/pages/shreedattamantra.html",
+        "/pages/saptahikparayan.html",
+        "/pages/socialmedia.html",
+        "/pages/annualevents.html",
+        "/pages/videogallery.html",
+        "/pages/audiogallery.html",
+        "/pages/photogallery.html",
+        "/pages/sangeetsevaparayan.html",
+        "/pages/visheshsevaparayan.html",
+        "/pages/granthvachanseva.html",
+        "/pages/donations.html",
+        "/images/YTube-Icon-40x40.png",
+        "/images/Instagram-Icon-40x40.png",
+        "/images/Whatsapp-Icon-40x40.png",
+        "/images/Google-maps-Icon-40x40.png",
+        "/images/Facebook-Icon-40x40.png",
+        "/images/Granth-Vachan-Icon-40x40.png",
+        "/images/Registration-Icon-40x40.png",
+        "/images/Video-Gallery-Icon-40x40.png",
+        "/images/Audio-Gallery-Icon-40x40.png",
+        "/images/Photo-Gallery-Icon-40x40.png",
+        "/images/Social-Media-Icon-40x40.png",
+        "/images/AnnualEvent-Icon-40x40.png",
+        "/images/Donations-Icon-40x40.png",
+        "/images/ContactUs-Icon-40x40.png",
+        "/images/hd-datta_photo1.jpg" // Cache images
+];
+// Cached resources that match the following strings should not be periodically updated.
+// These are the tips html pages themselves, and their images.
+// Everything else, we try to update on a regular basis, to make sure lists of tips get updated and css/js are recent too.
+const DONT_UPDATE_RESOURCES = [
+    '/videos/',
+    '/audios/'
+];
 
-    /*
-      Welcome to our basic Service Worker! This Service Worker offers a basic offline experience
-      while also being easily customizeable. You can add in your own code to implement the capabilities
-      listed below, or change anything else you would like.
+self.addEventListener('install', event => {
+    event.waitUntil((async () => {
+        const cache = await caches.open(CACHE_NAME);
+        cache.addAll(INITIAL_CACHED_RESOURCES);
+    })());
+});
 
+// We have a cache-first strategy, where we look for resources in the cache first
+// and only on the network if this fails.
+// We also periodically update the cache in the background for the main pages.
+self.addEventListener('fetch', event => {
+    event.respondWith((async () => {
+        const cache = await caches.open(CACHE_NAME);
 
-      Need an introduction to Service Workers? Check our docs here: https://docs.pwabuilder.com/#/home/sw-intro
-      Want to learn more about how our Service Worker generation works? Check our docs here: https://docs.pwabuilder.com/#/studio/existing-app?id=add-a-service-worker
+        // Try the cache first.
+        const cachedResponse = await cache.match(event.request);
+        if (cachedResponse !== undefined) {
+            // Cache hit, let's send the cached resource.
+            return cachedResponse;
+        } else {
+            // Nothing in cache, let's go to the network.
 
-      Did you know that Service Workers offer many more capabilities than just offline? 
-        - Background Sync: https://microsoft.github.io/win-student-devs/#/30DaysOfPWA/advanced-capabilities/06
-        - Periodic Background Sync: https://web.dev/periodic-background-sync/
-        - Push Notifications: https://microsoft.github.io/win-student-devs/#/30DaysOfPWA/advanced-capabilities/07?id=push-notifications-on-the-web
-        - Badges: https://microsoft.github.io/win-student-devs/#/30DaysOfPWA/advanced-capabilities/07?id=application-badges
-    */
+            try {
+                const fetchResponse = await fetch(event.request);
+                if (!event.request.url.includes('google-analytics') && !event.request.url.includes('browser-sync')) {
+                    // Save the new resource in the cache (responses are streams, so we need to clone in order to use it here).
+                    cache.put(event.request, fetchResponse.clone());
+                }
 
-    const HOSTNAME_WHITELIST = [
-        self.location.hostname,
-        'fonts.gstatic.com',
-        'fonts.googleapis.com',
-         'drive.google.com',
-         'play.google.com', 
-         'googletagmanager.com', 
-         'api.google.com', 
-          'storage.googleapis.com',
-        'cdn.jsdelivr.net'
-    ]
-
-    // The Util Function to hack URLs of intercepted requests
-    const getFixedUrl = (req) => {
-        var now = Date.now()
-        var url = new URL(req.url)
-
-        // 1. fixed http URL
-        // Just keep syncing with location.protocol
-        // fetch(httpURL) belongs to active mixed content.
-        // And fetch(httpRequest) is not supported yet.
-        url.protocol = self.location.protocol
-
-        // 2. add query for caching-busting.
-        // Github Pages served with Cache-Control: max-age=600
-        // max-age on mutable content is error-prone, with SW life of bugs can even extend.
-        // Until cache mode of Fetch API landed, we have to workaround cache-busting with query string.
-        // Cache-Control-Bug: https://bugs.chromium.org/p/chromium/issues/detail?id=453190
-        if (url.hostname === self.location.hostname) {
-            url.search += (url.search ? '&' : '?') + 'cache-bust=' + now
+                // And return it.
+                return fetchResponse;
+            } catch (e) {
+                // Fetching didn't work let's go to the error page.
+                if (event.request.mode === 'navigate') {
+                    await rememberRequestedTip(event.request.url);
+                    const errorResponse = await cache.match('/offline/');
+                    return errorResponse;
+                }
+            }
         }
-        return url.href
+    })());
+});
+
+async function rememberRequestedTip(url) {
+    let tips = await localforage.getItem('bg-tips');
+    if (!tips) {
+        tips = [];
     }
 
-    /**
-     *  @Lifecycle Activate
-     *  New one activated when old isnt being used.
-     *
-     *  waitUntil(): activating ====> activated
-     */
-    self.addEventListener('activate', event => {
-      event.waitUntil(self.clients.claim())
-    })
+    tips.push(url);
+    await localforage.setItem('bg-tips', tips);
+}
 
-    /**
-     *  @Functional Fetch
-     *  All network requests are being intercepted here.
-     *
-     *  void respondWith(Promise<Response> r)
-     */
-    self.addEventListener('fetch', event => {
-    // Skip some of cross-origin requests, like those for Google Analytics.
-    if (HOSTNAME_WHITELIST.indexOf(new URL(event.request.url).hostname) > -1) {
-        // Stale-while-revalidate
-        // similar to HTTP's stale-while-revalidate: https://www.mnot.net/blog/2007/12/12/stale
-        // Upgrade from Jake's to Surma's: https://gist.github.com/surma/eb441223daaedf880801ad80006389f1
-        const cached = caches.match(event.request)
-        const fixedUrl = getFixedUrl(event.request)
-        const fetched = fetch(fixedUrl, { cache: 'no-store' })
-        const fetchedCopy = fetched.then(resp => resp.clone())
-
-        // Call respondWith() with whatever we get first.
-        // If the fetch fails (e.g disconnected), wait for the cache.
-        // If there’s nothing in cache, wait for the fetch.
-        // If neither yields a response, return offline pages.
-        event.respondWith(
-        Promise.race([fetched.catch(_ => cached), cached])
-            .then(resp => resp || fetched)
-            .catch(_ => { /* eat any errors */ })
-        )
-
-        // Update the cache with the version we fetched (only for ok status)
-        event.waitUntil(
-        Promise.all([fetchedCopy, caches.open("pwa-cache")])
-            .then(([response, cache]) => response.ok && cache.put(event.request, response))
-            .catch(_ => { /* eat any errors */ })
-        )
+// Listen to background sync events to load requested tips that couldn't be retrieved when offline.
+self.addEventListener('sync', event => {
+    if (event.tag === 'bg-load-tip') {
+        event.waitUntil(backgroundSyncLoadTips());
     }
-    })
+});
+
+// Fetch the requested tips now, and put them in cache.
+async function backgroundSyncLoadTips() {
+    const tips = await localforage.getItem('bg-tips');
+    if (!tips || !tips.length) {
+        return;
+    }
+
+    // Fetch and cache each tip.
+    const cache = await caches.open(CACHE_NAME);
+    await cache.addAll(tips);
+
+    // Re-engage user with a notification.
+    registration.showNotification(`${tips.length} DevTools Tips was/were loaded in the background and is/are ready`, {
+        icon: "/images/android-chrome-192x192.png",
+        body: "View the tip",
+        data: tips[0]
+    });
+
+    await localforage.removeItem('bg-tips');
+}
+
+self.addEventListener('notificationclick', event => {
+    // assuming only one type of notification right now
+    event.notification.close();
+    clients.openWindow(event.notification.data);
+});
+
+// Listen the periodic background sync events to update the cached resources.
+self.addEventListener('periodicsync', event => {
+    if (event.tag === 'update-cached-content') {
+        event.waitUntil(updateCachedContent());
+    }
+});
+
+async function updateCachedContent() {
+    const requests = await findCacheEntriesToBeRefreshed();
+    const cache = await caches.open(CACHE_NAME);
+
+    for (const request of requests) {
+        try {
+            // Fetch the new version.
+            const fetchResponse = await fetch(request);
+            // Refresh the cache.
+            await cache.put(request, fetchResponse.clone());
+        } catch (e) {
+            // Fail silently, we'll just keep whatever we already had in the cache.
+        }
+    }
+}
+
+// Find the entries that are already cached and that we do want to update. This way we only
+// update these ones and let the user visit new pages when they are online to populate more things
+// in the cache.
+async function findCacheEntriesToBeRefreshed() {
+    const cache = await caches.open(CACHE_NAME);
+    const requests = await cache.keys();
+    return requests.filter(request => {
+        return !DONT_UPDATE_RESOURCES.some(pattern => request.url.includes(pattern));
+    });
+}
