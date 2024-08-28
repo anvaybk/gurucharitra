@@ -2,21 +2,21 @@
 
 const CACHE_NAME = 'gurucharitra-v1.0.0.0';
 const INITIAL_CACHED_RESOURCES = [
-        "/gurucharitra", // Cache the root URL
-        "gurucharitra/index.html", // Cache HTML file
-        "gurucharitra/css/styles.css", // Cache CSS file
-        "gurucharitra/css/homestyles",
-        "gurucharitra/js/script.js", // Cache JavaScript file
-        "gurucharitra/images/shree_gurucharitra_saramrut.jpg",
-        "gurucharitra/images/shree_gurucharitra_saramrut.webp",
-        "gurucharitra/chapters.html",
-        "gurucharitra/home.html",
-        "gurucharitra/pages/chapters1.html",
-        "gurucharitra/pages/chapters2.html",
-        "gurucharitra/pages/chapters3.html",
-        "gurucharitra/pages/chapters4.html",
-        "gurucharitra/pages/chapters5.html",
-        "gurucharitra/pages/chapters6.html",
+        "/", // Cache the root URL
+        "/index.html", // Cache HTML file
+        "/css/styles.css", // Cache CSS file
+        "/css/homestyles",
+        "/js/script.js", // Cache JavaScript file
+        "/images/shree_gurucharitra_saramrut.jpg",
+        "/images/shree_gurucharitra_saramrut.webp",
+        "/chapters.html",
+        "/home.html",
+        "/pages/chapters1.html",
+        "/pages/chapters2.html",
+        "/pages/chapters3.html",
+        "/pages/chapters4.html",
+        "/pages/chapters5.html",
+        "/pages/chapters6.html",
         "/pages/chapters7.html",
         "/pages/chapters8.html",
         "/pages/chapters9.html",
@@ -52,8 +52,8 @@ const INITIAL_CACHED_RESOURCES = [
         "/images/Social-Media-Icon-40x40.png",
         "/images/AnnualEvent-Icon-40x40.png",
         "/images/Donations-Icon-40x40.png",
-        "gurucharitra/images/ContactUs-Icon-40x40.png",
-        "images/hd-datta_photo1.jpg" // Cache images
+        "/images/ContactUs-Icon-40x40.png",
+        "/images/hd-datta_photo1.jpg" // Cache images
 ];
 // Cached resources that match the following strings should not be periodically updated.
 // These are the tips html pages themselves, and their images.
