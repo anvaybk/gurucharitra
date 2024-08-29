@@ -133,6 +133,12 @@ h1 {
     }
 }
 
+@media print {
+  body {
+    display: none;
+  }
+}
+
 /* Footer styles */
 footer {
     text-align: center;
