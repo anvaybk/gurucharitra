@@ -32,22 +32,24 @@ function goToRegistrationHomePage() {
 }
 
 
-// Disable code
+// Disable code for user activity
 $("body").on("contextmenu", function (e)  
    {  
       return false;  
    });  
-}); 
+
 //Or,
 document.oncontextmenu = function() {
    return false;
 }
+
 //Disable right-click menu on a particular section on the page,
 $(document).ready(function(){  
    $("#youDivSectionId").bind("contextmenu", function(e) {  
       return false;  
    });  
 }); 
+
 //Disable Cut, copy, paste,
 $(document).ready(function(){
    $('body').bind('cut copy paste', function (e)
@@ -55,6 +57,7 @@ $(document).ready(function(){
       e.preventDefault();
    });
 });
+
 //Let's Block the same cut, copy, paste events with javascript codes,
 $(document).ready(function(){  
 $(document).keydown(function(event) {  
@@ -66,6 +69,7 @@ $(document).keydown(function(event) {
       }  
    });  
 }); 
+
 //Prevent browser Debugger console example,
 $(document).keydown(function (event) {
 // Prevent F12 -
