@@ -1,11 +1,14 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "io.github.anvaybk.gurucharitra.twa",
-      "sha256_cert_fingerprints":
-        ["E8:DB:18:26:04:5D:7B:CA:60:3C:83:FD:C7:A3:AC:91:64:E2:8A:45:73:EA:35:3B:DD:80:9B:0D:5A:07:2D:84"]
+      "sha256_cert_fingerprints": [
+        "E8:DB:18:26:04:5D:7B:CA:60:3C:83:FD:C7:A3:AC:91:64:E2:8A:45:73:EA:35:3B:DD:80:9B:0D:5A:07:2D:84"
+      ]
     }
   }
 ]
