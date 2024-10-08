@@ -31,6 +31,9 @@ function goToRegistrationHomePage() {
      window.location.href = '../registrations.html';
 }
 
+function goToNityaPathHome() {
+     window.location.href = '../nityapathhome.html';
+}
 
 // JavaScript to disable right-click context menu globally and on a specific section
 document.addEventListener('DOMContentLoaded', function() {
