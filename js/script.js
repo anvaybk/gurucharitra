@@ -86,3 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+
+// Get all audio elements for Audio Gallery
+const audioElements = document.querySelectorAll('audio');
+// Add event listener for each audio element
+audioElements.forEach(audio => {
+    audio.addEventListener('play', () => {
+        // Pause all other audio elements
+        audioElements.forEach(otherAudio => {
+            if (otherAudio !== audio) {
+                otherAudio.pause();
+            }
+        });
+    });
+});
+
