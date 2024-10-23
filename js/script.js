@@ -111,7 +111,7 @@ function onYouTubeIframeAPIReady() {
     videos.forEach(function(video) {
         var videoId = video.getAttribute('data-video-id');
         new YT.Player(video.id, {
-            height: '360',
+            height: '450',
             width: '640',
             videoId: videoId,
             events: {
