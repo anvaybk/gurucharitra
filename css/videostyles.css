@@ -25,7 +25,8 @@ h2 {
 
 .youtube-video, .youtube-playlist {
     width: 100%;
-    height: auto; /* Adjust height automatically */
+    min-height: 450px; /* Set minimum height */
+    height: auto; /* Allow height to expand */
 }
 
 @media (min-width: 368px) {
