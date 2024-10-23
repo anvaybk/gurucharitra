@@ -1,7 +1,7 @@
 /* styles.css */
 
 /* Basic styling */
-html, body {
+body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
@@ -9,8 +9,7 @@ html, body {
     background-color: #f0f0f0;
     user-select: none;
     -webkit-user-select: none;
-     overflow-x: hidden; /* Prevent horizontal scrollbar */
-     overflow-y: auto; /* Allow vertical scrollbar only if necessary */	
+   
 }
 
 .container {
