@@ -101,3 +101,51 @@ audioElements.forEach(audio => {
     });
 });
 
+// Get all Video elements for Video Gallery
+var currentlyPlaying;
+
+function onYouTubeIframeAPIReady() {
+    // Initialize video players
+    var videos = document.querySelectorAll('.youtube-video');
+    
+    videos.forEach(function(video) {
+        var videoId = video.getAttribute('data-video-id');
+        new YT.Player(video.id, {
+            height: '360',
+            width: '640',
+            videoId: videoId,
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    });
+
+    // Initialize playlists
+    var playlists = document.querySelectorAll('.youtube-playlist');
+    playlists.forEach(function(playlist) {
+        var playlistId = playlist.getAttribute('data-playlist-id');
+        new YT.Player(playlist.id, {
+            height: '450',
+            width: '1542',
+            playerVars: {
+                list: playlistId
+            },
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    });
+}
+
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        if (currentlyPlaying && currentlyPlaying !== event.target) {
+            currentlyPlaying.pauseVideo(); // Pause the currently playing video
+        }
+        currentlyPlaying = event.target; // Update currentlyPlaying to the new video
+    } else if (event.data === YT.PlayerState.ENDED) {
+        currentlyPlaying = null; // Reset when video ends
+    }
+}
+
+
