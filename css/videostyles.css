@@ -31,6 +31,7 @@ h2 {
 
 @media (min-width: 368px) {
     .youtube-video, .youtube-playlist {
+        min-height: 400px; /* Set minimum height */
         height: 450px; /* Set a specific height for larger screens */
     }
 
