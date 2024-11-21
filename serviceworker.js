@@ -1,6 +1,6 @@
-// Last updated on 28082024
+// Last updated on 22112024
 
-const CACHE_NAME = 'gurucharitra-v1.0.0.0';
+const CACHE_NAME = 'gurucharitra-v1.0.0.5';
 const INITIAL_CACHED_RESOURCES = [
         "/", // Cache the root URL
         "/index.html", // Cache HTML file
@@ -11,6 +11,7 @@ const INITIAL_CACHED_RESOURCES = [
         "/images/shree_gurucharitra_saramrut.webp",
         "/chapters.html",
         "/home.html",
+		"/nityapathhome.html",
         "/pages/chapters1.html",
         "/pages/chapters2.html",
         "/pages/chapters3.html",
@@ -39,7 +40,27 @@ const INITIAL_CACHED_RESOURCES = [
         "/pages/visheshsevaparayan.html",
         "/pages/granthvachanseva.html",
         "/pages/donations.html",
-        "/images/YTube-Icon-40x40.png",
+		"/pages/gurucharitra-audio-gallery.html",
+		"/pages/nityapath1.html",
+		"/pages/nityapath2.html",
+		"/pages/nityapath3.html",
+		"/pages/nityapath4.html",
+		"/pages/nityapath5.html",
+		"/pages/nityapath6.html",
+		"/pages/nityapath7.html",
+		"/pages/nityapath8.html",
+		"/pages/nityapath9.html",
+		"/pages/nityapath10.html",
+		"/pages/nityapath11.html",
+		"/pages/nityapath12.html",
+		"/pages/nityapath13.html",
+		"/pages/nityapath14.html",
+		"/pages/nityapath15.html",
+		"/pages/nityapath16.html",
+		"/pages/nityapath17.html",
+		"/pages/nityapath18.html",
+		"/pages/nityapath19.html",
+		"/images/YTube-Icon-40x40.png",
         "/images/Instagram-Icon-40x40.png",
         "/images/Whatsapp-Icon-40x40.png",
         "/images/Google-maps-Icon-40x40.png",
@@ -53,7 +74,25 @@ const INITIAL_CACHED_RESOURCES = [
         "/images/AnnualEvent-Icon-40x40.png",
         "/images/Donations-Icon-40x40.png",
         "/images/ContactUs-Icon-40x40.png",
-        "/images/hd-datta_photo1.jpg" // Cache images
+		"/images/Audio-Sangrah-Icon-60x60.png",
+		"/images/Google_play_store.svg",
+        "/images/hd-datta_photo1.jpg", // Cache images
+		"/audios/Gurucharitra-Adhyay-1.mp3",
+		"/audios/Gurucharitra-Adhyay-2.mp3",
+		"/audios/Gurucharitra-Adhyay-3.mp3",
+		"/audios/Gurucharitra-Adhyay-4.mp3",
+		"/audios/Gurucharitra-Adhyay-5.mp3",
+		"/audios/Gurucharitra-Adhyay-6.mp3",
+		"/audios/Gurucharitra-Adhyay-7.mp3",
+		"/audios/Gurucharitra-Adhyay-8.mp3",
+		"/audios/Gurucharitra-Adhyay-9.mp3",
+		"/audios/Gurucharitra-Adhyay-10.mp3",
+		"/audios/Gurucharitra-Adhyay-11.mp3",
+		"/audios/Gurucharitra-Adhyay-12.mp3",
+		"/audios/Gurucharitra-Adhyay-13.mp3",
+		"/audios/Gurucharitra-Adhyay-14.mp3",
+		"/audios/Gurucharitra-Adhyay-15.mp3",
+		"/audios/Gurucharitra-Adhyay-16.mp3"
 ];
 // Cached resources that match the following strings should not be periodically updated.
 // These are the tips html pages themselves, and their images.
