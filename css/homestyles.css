@@ -98,8 +98,8 @@ footer {
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
     nav.menu .menu-item {
-        flex: 1 1 calc(50% - 40px);
-        max-width: calc(50% - 40px);
+        flex: 1 1 calc(45% - 40px);  
+        max-width: calc(100% - 40px);
     }
 }
 
@@ -110,10 +110,18 @@ footer {
     }
 }
 
+@media screen and (max-width: 700px) {
+    nav.menu .menu-item {
+       flex: 1 1 calc(45% - 40px);  
+        max-width: calc(100% - 40px);
+    }
+}
+
+
 @media screen and (max-width: 500px) {
     nav.menu .menu-item {
-        flex: 1 1 calc(45% - 40px);
-        max-width: calc(50% - 40px);
+        flex: 1 1 calc(45% - 40px);  
+        max-width: calc(100% - 40px);
     }
 }
 
