@@ -76,6 +76,7 @@ const INITIAL_CACHED_RESOURCES = [
         "/images/ContactUs-Icon-40x40.png",
 	"/images/Audio-Sangrah-Icon-60x60.png",
 	"/images/Google_play_store.svg",
+	"/images/icon-256x256.png",
         "/images/hd-datta_photo1.jpg", // Cache images
 	"/audios/Gurucharitra-Adhyay-1.mp3",
 	"/audios/Gurucharitra-Adhyay-2.mp3",
