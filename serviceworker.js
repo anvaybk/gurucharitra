@@ -1,4 +1,4 @@
-// Last updated on 22112024
+// Last updated on 20122024
 
 const CACHE_NAME = 'gurucharitra-v1.0.0.5';
 const INITIAL_CACHED_RESOURCES = [
@@ -41,6 +41,7 @@ const INITIAL_CACHED_RESOURCES = [
         "/pages/granthvachanseva.html",
         "/pages/donations.html",
 	"/pages/gurucharitra-audio-gallery.html",
+	"/pages/kathamrutnondani.html",
 	"/pages/nityapath1.html",
 	"/pages/nityapath2.html",
 	"/pages/nityapath3.html",
