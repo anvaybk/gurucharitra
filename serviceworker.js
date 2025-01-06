@@ -1,4 +1,4 @@
-// Last updated on 20122024
+// Last updated on 06012025
 
 const CACHE_NAME = 'gurucharitra-v1.0.0.5';
 const INITIAL_CACHED_RESOURCES = [
@@ -61,6 +61,9 @@ const INITIAL_CACHED_RESOURCES = [
 	"/pages/nityapath17.html",
 	"/pages/nityapath18.html",
 	"/pages/nityapath19.html",
+	"/pages/nityapath-bhiksha.html",
+	"/pages/nityapath-bhiksha1.html",
+	"/pages/nityapath-bhiksha2.html",
 	"/images/YTube-Icon-40x40.png",
         "/images/Instagram-Icon-40x40.png",
         "/images/Whatsapp-Icon-40x40.png",
