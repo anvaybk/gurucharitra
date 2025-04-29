@@ -1,11 +1,11 @@
-// Last updated on 06012025
+// Last updated on 29042025
 
 const CACHE_NAME = 'gurucharitra-v1.0.0.5';
 const INITIAL_CACHED_RESOURCES = [
         "/", // Cache the root URL
         "/index.html", // Cache HTML file
         "/css/styles.css", // Cache CSS file
-        "/css/homestyles",
+        "/css/homestyles.css",
         "/js/script.js", // Cache JavaScript file
         "/images/shree_gurucharitra_saramrut.jpg",
         "/images/shree_gurucharitra_saramrut.webp",
