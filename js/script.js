@@ -44,6 +44,9 @@ function goToPhotoGalleryHome() {
 function goToAnnualEventsHome() {
      window.location.href = 'annualevents.html';
 }
+function goToGurucharitraAudioHome() {
+     window.location.href = 'gurucharitra-audio-gallery.html';
+}
 
 
 // Nitya Path Navigation Added for Next and Previous button 03072025
@@ -115,6 +118,66 @@ function goToNityaPathPage21() {
 }
 function goToNityaPathPage22() {
      window.location.href = 'nityapath-bhiksha2.html';
+}
+
+
+// Gurucharitra Saramrut Navigation Added for Next and Previous button 03072025
+function goToGurucharitraHome() {
+     window.location.href = '../chapters.html';
+}
+function goToGurucharitraSankalp() {
+     window.location.href = 'sankalp.html';
+}
+function goToGurucharitraDattaMantra() {
+     window.location.href = 'shreedattamantra.html';
+}
+function goToGurucharitraPage01() {
+     window.location.href = 'chapter1.html';
+}
+function goToGurucharitraPage02() {
+     window.location.href = 'chapter1.html';
+}
+function goToGurucharitraPage03() {
+     window.location.href = 'chapter3.html';
+}
+function goToGurucharitraPage04() {
+     window.location.href = 'chapter4.html';
+}
+function goToGurucharitraPage05() {
+     window.location.href = 'chapter5.html';
+}
+function goToGurucharitraPage06() {
+     window.location.href = 'chapter6.html';
+}
+function goToGurucharitraPage07() {
+     window.location.href = 'chapter7.html';
+}
+function goToGurucharitraPage08() {
+     window.location.href = 'chapter8.html';
+}
+function goToGurucharitraPage09() {
+     window.location.href = 'chapter9.html';
+}
+function goToGurucharitraPage10() {
+     window.location.href = 'chapter10.html';
+}
+function goToGurucharitraPage11() {
+     window.location.href = 'chapter11.html';
+}
+function goToGurucharitraPage12() {
+     window.location.href = 'chapter12.html';
+}
+function goToGurucharitraPage13() {
+     window.location.href = 'chapter13.html';
+}
+function goToGurucharitraPage14() {
+     window.location.href = 'chapter14.html';
+}
+function goToGurucharitraPage15() {
+     window.location.href = 'chapter15.html';
+}
+function goToGurucharitraPage16() {
+     window.location.href = 'chapter16.html';
 }
 
 
