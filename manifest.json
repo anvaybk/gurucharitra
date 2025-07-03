@@ -1,14 +1,14 @@
 {
   "name": "Gurucharitra Saramrut",
   "id": "/gurucharitra/",
-  "short_name": "Gurucharitra",
+  "short_name": "गुरुचरित्र सारामृत ",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#a52a2a",
   "orientation": "any",
   "scope": "/",
   "description": "श्रीगुरुचरित्रसारामृत - Shri Gurucharitra Saramrut. Our platform offers a well-organized collection of the Gurucharitra Saramrut and detailed information on various Parayan Sevas, including the Sapthahik (weekly)  and Vishesh (special) Paryan Sevas.",
-  "version": "1.0.0.6",
+  "version": "1.0.0.7",
   "theme_color": "#000000",
    "developer": {
     "name": "Anvay B Kulkarni",
