@@ -26,7 +26,8 @@ nav.menu {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    padding: 20px;
+    padding: 1rem;
+	 /* padding: 20px; */
     background-color: bisque; /* #f4f4f4; */
 }
 
