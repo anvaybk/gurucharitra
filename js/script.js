@@ -31,9 +31,93 @@ function goToRegistrationHomePage() {
      window.location.href = '../registrations.html';
 }
 
+// Chapter Next Previous link for Video Gallery 03072025
+function goToVideoGalleryHome() {
+     window.location.href = 'videogallery.html';
+}
+function goToAudioGalleryHome() {
+     window.location.href = 'audiogallery.html';
+}
+function goToPhotoGalleryHome() {
+     window.location.href = 'photosangrah.html';
+}
+function goToAnnualEventsHome() {
+     window.location.href = 'annualevents.html';
+}
+
+
+// Nitya Path Navigation Added for Next and Previous button 03072025
 function goToNityaPathHome() {
      window.location.href = '../nityapathhome.html';
 }
+function goToNityaPathPage01() {
+     window.location.href = 'nityapath1.html';
+}
+function goToNityaPathPage02() {
+     window.location.href = 'nityapath2.html';
+}
+function goToNityaPathPage03() {
+     window.location.href = 'nityapath3.html';
+}
+function goToNityaPathPage04() {
+     window.location.href = 'nityapath4.html';
+}
+function goToNityaPathPage05() {
+     window.location.href = 'nityapath5.html';
+}
+function goToNityaPathPage06() {
+     window.location.href = 'nityapath6.html';
+}
+function goToNityaPathPage07() {
+     window.location.href = 'nityapath7.html';
+}
+function goToNityaPathPage08() {
+     window.location.href = 'nityapath8.html';
+}
+function goToNityaPathPage09() {
+     window.location.href = 'nityapath9.html';
+}
+function goToNityaPathPage10() {
+     window.location.href = 'nityapath10.html';
+}
+function goToNityaPathPage11() {
+     window.location.href = 'nityapath11.html';
+}
+function goToNityaPathPage12() {
+     window.location.href = 'nityapath12.html';
+}
+function goToNityaPathPage13() {
+     window.location.href = 'nityapath13.html';
+}
+function goToNityaPathPage14() {
+     window.location.href = 'nityapath14.html';
+}
+function goToNityaPathPage15() {
+     window.location.href = 'nityapath15.html';
+}
+function goToNityaPathPage16() {
+     window.location.href = 'nityapath16.html';
+}
+function goToNityaPathPage17() {
+     window.location.href = 'nityapath17.html';
+}
+function goToNityaPathPage18() {
+     window.location.href = 'nityapath18.html';
+}
+function goToNityaPathPage19() {
+     window.location.href = 'nityapath19.html';
+}
+function goToNityaPathPage20() {
+     window.location.href = 'nityapath-bhiksha.html';
+}
+function goToNityaPathPage21() {
+     window.location.href = 'nityapath-bhiksha1.html';
+}
+function goToNityaPathPage22() {
+     window.location.href = 'nityapath-bhiksha2.html';
+}
+
+
 
 // JavaScript to disable right-click context menu globally and on a specific section
 document.addEventListener('DOMContentLoaded', function() {
