@@ -32,73 +32,47 @@
 </head>
 <body>
 
-<form id="japForm">
-  <label> Enter your Name <input type="text" id="name" placeholder="Your Name" required></label><br>
-  <label> Select / Enter the Date<input type="date" id="date" placeholder="Date" required></label><br>
-  <label>Jap Mala Count <input type="number" id="japMalaCount" min="0"></label><br>
-  <label>Jap Count <input type="number" id="japCount" min="0"></label><br>
+<h2>Jap Submission</h2>
+<form id="japForm" action="https://script.google.com/macros/s/AKfycby1sTqb0cwB9oq28q5oVmkH5tfnUQO8iDWsSrynOrv_7AdQjO6OA42or9nqMsh5D5pg/exec" method="POST" target="hidden_iframe">
+
+  <input type="text" name="name" placeholder="Your Name" required><br>
+  <input type="date" name="date" placeholder="Date" required><br>
+  <label>Jap Mala Count <input type="number" name="japMalaCount" id="japMalaCount" min="0"></label><br>
+  <label>Jap Count <input type="number" name="japCount" id="japCount" min="0"></label><br>
   <div>Computed Jap Count: <span id="computedJap">0</span></div>
   <button type="submit">Submit</button>
 </form>
 
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 <div id="message"></div>
 
 <script>
-const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby1sTqb0cwB9oq28q5oVmkH5tfnUQO8iDWsSrynOrv_7AdQjO6OA42or9nqMsh5D5pg/exec';
+  const malaInput = document.getElementById('japMalaCount');
+  const japInput = document.getElementById('japCount');
+  const display = document.getElementById('computedJap');
+  const message = document.getElementById('message');
 
-const form = document.getElementById('japForm');
-const malaInput = document.getElementById('japMalaCount');
-const japInput = document.getElementById('japCount');
-const display = document.getElementById('computedJap');
+  malaInput.addEventListener('input', updateComputed);
+  japInput.addEventListener('input', updateComputed);
 
-function updateComputed() {
-  let mala = parseInt(malaInput.value) || 0;
-  let jap = parseInt(japInput.value) || 0;
-  if (mala > 0) {
-    let v = mala * 108;
-    japInput.value = v;
-    display.textContent = v;
-  } else {
-    display.textContent = jap;
-  }
-}
-
-malaInput.addEventListener('input', updateComputed);
-japInput.addEventListener('input', updateComputed);
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-
-  const payload = {
-    name: document.getElementById('name').value,
-    date: document.getElementById('date').value,
-    japMalaCount: malaInput.value,
-    japCount: japInput.value
-  };
-
-  fetch(WEBAPP_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  })
-  .then(r => r.json())
-  .then(j => {
-    if (j.status === 200) {
-      alert(j.message);
-      form.reset();
-      display.textContent = "0";
+  function updateComputed() {
+    const mala = parseInt(malaInput.value) || 0;
+    const jap = parseInt(japInput.value) || 0;
+    if (mala > 0) {
+      const total = mala * 108;
+      japInput.value = total;
+      display.textContent = total;
     } else {
-      alert('Error: ' + j.message);
+      display.textContent = jap;
     }
-  })
-  .catch(err => {
-    alert('Submission failed. Try again.\n' + err);
+  }
+
+  window.addEventListener('message', (e) => {
+    if (e.origin.includes('script.google.com')) {
+      message.textContent = e.data;
+      message.style.color = e.data.includes('successfully') ? 'green' : 'red';
+    }
   });
-});
 </script>
-
-
 </body>
 </html>
