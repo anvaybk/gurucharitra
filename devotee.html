@@ -44,60 +44,61 @@
 <div id="message"></div>
 
 <script>
-  const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby1sTqb0cwB9oq28q5oVmkH5tfnUQO8iDWsSrynOrv_7AdQjO6OA42or9nqMsh5D5pg/exec';
+const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby1sTqb0cwB9oq28q5oVmkH5tfnUQO8iDWsSrynOrv_7AdQjO6OA42or9nqMsh5D5pg/exec';
 
-  const form = document.getElementById('japForm');
-  const malaInput = document.getElementById('japMalaCount');
-  const japInput = document.getElementById('japCount');
-  const display = document.getElementById('computedJap');
-  const messageBox = document.getElementById('message');
+const form = document.getElementById('japForm');
+const malaInput = document.getElementById('japMalaCount');
+const japInput = document.getElementById('japCount');
+const display = document.getElementById('computedJap');
 
-  function updateComputed() {
-    const mala = parseInt(malaInput.value) || 0;
-    const jap = parseInt(japInput.value) || 0;
-    if (mala > 0) {
-      const total = mala * 108;
-      japInput.value = total;
-      display.textContent = total;
-    } else {
-      display.textContent = jap;
-    }
+function updateComputed() {
+  let mala = parseInt(malaInput.value) || 0;
+  let jap = parseInt(japInput.value) || 0;
+  if (mala > 0) {
+    let v = mala * 108;
+    japInput.value = v;
+    display.textContent = v;
+  } else {
+    display.textContent = jap;
   }
+}
 
-  malaInput.addEventListener('input', updateComputed);
-  japInput.addEventListener('input', updateComputed);
+malaInput.addEventListener('input', updateComputed);
+japInput.addEventListener('input', updateComputed);
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+form.addEventListener('submit', e => {
+  e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const date = document.getElementById('date').value;
-    const mala = parseInt(malaInput.value) || 0;
-    const jap = parseInt(japInput.value) || 0;
+  const payload = {
+    name: document.getElementById('name').value,
+    date: document.getElementById('date').value,
+    japMalaCount: malaInput.value,
+    japCount: japInput.value
+  };
 
-    if (!name || (!mala && !jap)) {
-      messageBox.textContent = "Please fill all required fields.";
-      messageBox.style.color = "red";
-      return;
+  fetch(WEBAPP_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  })
+  .then(r => r.json())
+  .then(j => {
+    if (j.status === 200) {
+      alert(j.message);
+      form.reset();
+      display.textContent = "0";
+    } else {
+      alert('Error: ' + j.message);
     }
-
-    const url = `${WEBAPP_URL}?name=${encodeURIComponent(name)}&date=${encodeURIComponent(date)}&japMalaCount=${mala}&japCount=${jap}`;
-
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        messageBox.textContent = data.message || "Submitted!";
-        messageBox.style.color = "green";
-        form.reset();
-        display.textContent = "0";
-      })
-      .catch(err => {
-        messageBox.textContent = "Submission failed. Try again.";
-        messageBox.style.color = "red";
-        console.error(err);
-      });
+  })
+  .catch(err => {
+    alert('Submission failed. Try again.\n' + err);
   });
+});
 </script>
+
 
 </body>
 </html>
