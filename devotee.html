@@ -1,0 +1,78 @@
+<!-- devotee.html -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Jap Submission</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f9ff;
+    }
+    form {
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #message {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head><body>
+<form id="japForm">
+  <input type="text" id="name" placeholder="Your Name" required><br>
+  <input type="date" id="date" placeholder="Date" required><br>
+  <label>Jap Mala Count <input type="number" id="japMalaCount" min="0"></label><br>
+  <label>Jap Count <input type="number" id="japCount" min="0"></label><br>
+  <div>Computed Jap Count: <span id="computedJap">0</span></div>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby1sTqb0cwB9oq28q5oVmkH5tfnUQO8iDWsSrynOrv_7AdQjO6OA42or9nqMsh5D5pg/exec';
+
+const form = document.getElementById('japForm');
+const malaInput = document.getElementById('japMalaCount');
+const japInput = document.getElementById('japCount');
+const display = document.getElementById('computedJap');
+
+function updateComputed() {
+  let mala = parseInt(malaInput.value) || 0;
+  let jap = parseInt(japInput.value) || 0;
+  if (mala > 0) {
+    let v = mala * 108;
+    japInput.value = v;
+    display.textContent = v;
+  } else {
+    display.textContent = jap;
+  }
+}
+
+// Update when inputs change
+malaInput.addEventListener('input', updateComputed);
+japInput.addEventListener('input', updateComputed);
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const payload = {
+    name: document.getElementById('name').value,
+    date: document.getElementById('date').value,
+    japMalaCount: malaInput.value,
+    japCount: japInput.value
+  };
+  fetch(WEBAPP_URL, {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).then(r => r.json())
+    .then(j => alert(j.message || 'Submitted!'))
+    .catch(err => alert('Error: '+ err));
+});
+</script>
+</body></html>

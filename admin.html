@@ -1,0 +1,30 @@
+<!-- admin.html -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Admin Dashboard</title></head><body>
+<h1>Daily Jap Summary</h1>
+<table border="1">
+  <thead><tr><th>Date</th><th>Total Jap</th><th>Entries</th></tr></thead>
+  <tbody id="tbody"></tbody>
+</table>
+
+<script>
+const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby1sTqb0cwB9oq28q5oVmkH5tfnUQO8iDWsSrynOrv_7AdQjO6OA42or9nqMsh5D5pg/exec';
+
+fetch(WEBAPP_URL)
+  .then(r => r.json())
+  .then(arr => {
+    const data = {};
+    arr.forEach(e => {
+      if (!data[e.date]) data[e.date] = {total:0, count:0};
+      data[e.date].total += Number(e.japCount);
+      data[e.date].count++;
+    });
+    const tbody = document.getElementById('tbody');
+    Object.keys(data).sort().forEach(d => {
+      let tr = document.createElement('tr');
+      tr.innerHTML = `<td>${d}</td><td>${data[d].total}</td><td>${data[d].count}</td>`;
+      tbody.appendChild(tr);
+    });
+  })
+  .catch(console.error);
+</script>
+</body></html>
