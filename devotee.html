@@ -1,10 +1,9 @@
-<!-- devotee.html -->
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jap Submission</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,7 +12,6 @@
     }
     form {
       max-width: 400px;
-      margin: auto;
       background: white;
       padding: 20px;
       border-radius: 8px;
@@ -26,27 +24,37 @@
       font-size: 16px;
     }
     #message {
-      text-align: center;
       font-weight: bold;
       margin-top: 10px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
 
-<h2 style="text-align:center;">Jap Submission</h2>
+<h2>Jap Submission</h2>
 
 <form id="japForm" action="https://script.google.com/macros/s/AKfycbwsRPtoZzEKUK-0VdeyNHHuC6qowOC5ZYCXTmqoaYXsbVtRcN85an8QtQQ3LPA2zwJF/exec" method="POST" target="hidden_iframe">
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="date" name="date" required>
-  <label>Jap Mala Count <input type="number" name="japMalaCount" id="japMalaCount" min="0"></label>
-  <label>Jap Count <input type="number" name="japCount" id="japCount" min="0"></label>
+  <input type="text" name="name" placeholder="Your Name" required /><br>
+  <input type="date" name="date" placeholder="Date" required /><br>
+
+  <label>Jap Mala Count:
+    <input type="number" name="japMalaCount" id="japMalaCount" min="0" />
+  </label><br>
+
+  <label>Jap Count:
+    <input type="number" name="japCount" id="japCount" min="0" />
+  </label><br>
+
   <div>Computed Jap Count: <span id="computedJap">0</span></div>
+
   <button type="submit">Submit</button>
+
+  <!-- ✅ Success/error message displayed here -->
+  <div id="message"></div>
 </form>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
-<div id="message"></div>
 
 <script>
   const malaInput = document.getElementById('japMalaCount');
@@ -69,10 +77,11 @@
   malaInput.addEventListener('input', updateComputed);
   japInput.addEventListener('input', updateComputed);
 
+  // ✅ Listen to postMessage from Google Apps Script iframe response
   window.addEventListener('message', (e) => {
     if (e.origin.includes('script.google.com')) {
       message.textContent = e.data;
-      message.style.color = e.data.includes('success') ? 'green' : 'red';
+      message.style.color = e.data.includes('successfully') ? 'green' : 'red';
     }
   });
 </script>
