@@ -122,6 +122,7 @@ window.dataLayer = window.dataLayer || [];
   </style>
 </head>
 <body>
+	
 	<div class="container-heading" oncontextmenu="return false;">
         <h1>  जप नोंदणी फॉर्म  </h1> 
      <div class="chapter-content" oncontextmenu="return false;"> 	
@@ -131,6 +132,59 @@ window.dataLayer = window.dataLayer || [];
     <form id="japForm" action="https://script.google.com/macros/s/AKfycbwsRPtoZzEKUK-0VdeyNHHuC6qowOC5ZYCXTmqoaYXsbVtRcN85an8QtQQ3LPA2zwJF/exec" method="POST" target="hidden_iframe">
       <label for="name" align="left">आपले पूर्ण नाव : *</label>
       <input type="text" name="name" id="name" required autocomplete="name" />
+	  
+	  <label for="city" align="left">शहराचे नाव निवडा / टाका : *</label>
+	<input list="cities" name="city" id="city" required autocomplete="address-level2" />
+	<datalist id="cities">
+	  <option value="परभणी">
+	  <option value="नांदेड">
+	  <option value="मुंबई">
+	  <option value="पुणे">
+	  <option value="नागपूर">
+	  <option value="नाशिक">
+	  <option value="ठाणे">
+	  <option value="नवी मुंबई">
+	  <option value="संभाजीनगर">
+	  <option value="सोलापूर">
+	  <option value="अमरावती">
+	  <option value="कोल्हापूर">
+	  <option value="लातूर">
+	  <option value="अहमदनगर">
+	  <option value="धुळे">
+	  <option value="जळगाव">
+	  <option value="सांगली">
+	  <option value="अकोला">
+	  <option value="चंद्रपूर">
+	  <option value="बीड">
+	  <option value="सातारा">
+	  <option value="वर्धा">
+	  <option value="बुलढाणा">
+	  <option value="रत्नागिरी">
+	  <option value="उस्मानाबाद">
+	  <option value="पनवेल">
+	  <option value="यवतमाळ">
+	  <option value="गोंदिया">
+	  <option value="हिंगोली">
+	  <option value="सिंधुदुर्ग">
+	  <option value="पालघर">
+	  <option value="मालवण">
+	  <option value="भुसावळ">
+	  <option value="नंदुरबार">
+	  <option value="मालेगाव">
+	  <option value="इचलकरंजी">
+	  <option value="कऱ्हाड">
+	  <option value="मिरज">
+	  <option value="शिर्डी">
+	  <option value="जळना">
+	  <option value="अंबरनाथ">
+	  <option value="कळवा">
+	  <option value="डोंबिवली">
+	  <option value="बोरीवली">
+	  <option value="कर्जत">
+	  <option value="विक्रोळी">
+	  <option value="अंबाजोगाई ">
+	</datalist>
+
 
       <label for="date" align="left">दिनांक निवडावा : *</label>
       <input type="date" name="date" id="date" required />
@@ -155,62 +209,68 @@ window.dataLayer = window.dataLayer || [];
     <iframe name="hidden_iframe" style="display: none;"></iframe>
   </div>
 
-  <script>
-    const form = document.getElementById('japForm');
-    const malaInput = document.getElementById('japMalaCount');
-    const japInput = document.getElementById('japCount');
-    const display = document.getElementById('computedJap');
-    const message = document.getElementById('message');
+   <script>
+  const form = document.getElementById('japForm');
+  const malaInput = document.getElementById('japMalaCount');
+  const japInput = document.getElementById('japCount');
+  const display = document.getElementById('computedJap');
+  const message = document.getElementById('message');
 
-    function updateComputed() {
-      const mala = parseInt(malaInput.value) || 0;
-      const jap = parseInt(japInput.value) || 0;
-      if (mala > 0) {
-        const total = mala * 108;
-        japInput.value = total;
-        display.textContent = total;
-      } else {
-        display.textContent = jap;
-      }
+  let isUpdating = false;
+
+  function updateFromMala() {
+    if (isUpdating) return;
+    isUpdating = true;
+    const mala = parseInt(malaInput.value) || 0;
+    const newJap = mala * 108;
+    japInput.value = newJap;
+    display.textContent = newJap;
+    isUpdating = false;
+  }
+
+  function updateFromJap() {
+    if (isUpdating) return;
+    isUpdating = true;
+    const jap = parseInt(japInput.value) || 0;
+    const newMala = Math.floor(jap / 108);
+    malaInput.value = newMala;
+    display.textContent = jap;
+    isUpdating = false;
+  }
+
+  // Event listeners
+  malaInput.addEventListener('input', updateFromMala);
+  japInput.addEventListener('input', updateFromJap);
+
+  function showMessage(text, color = "green") {
+    message.textContent = text;
+    message.style.color = color;
+    if (text.includes("Submitting")) return;
+    setTimeout(() => {
+      message.textContent = "";
+    }, 3000);
+  }
+
+  form.addEventListener('submit', (e) => {
+    const mala = parseInt(malaInput.value) || 0;
+    const jap = parseInt(japInput.value) || 0;
+
+    if (!mala && !jap) {
+      e.preventDefault();
+      showMessage("❌ कृपया जप माळेची संख्या किंवा जप संख्या यापैकी एक भरावी.", "red");
+      return;
     }
 
-    malaInput.addEventListener('input', updateComputed);
-    japInput.addEventListener('input', updateComputed);
-
-    function showMessage(text, color = "green") {
-      message.textContent = text;
-      message.style.color = color;
-      if (text.includes("Submitting")) return;
-
-      setTimeout(() => {
-        message.textContent = "";
-      }, 3000);
+    // Sync both before final submit
+    if (mala > 0) {
+      japInput.value = mala * 108;
+    } else if (jap > 0) {
+      malaInput.value = Math.floor(jap / 108);
     }
 
-    form.addEventListener('submit', (e) => {
-      const mala = parseInt(malaInput.value) || 0;
-      const jap = parseInt(japInput.value) || 0;
-
-      if (!mala && !jap) {
-        e.preventDefault();
-        showMessage("❌ कृपया जप माळेची संख्या किंवा जप संख्या यापैकी एक भरावी.", "red");
-        return;
-      }
-
-      showMessage("Jap Count has been successfully submitted! ", "#555");
-    });
-
-    window.addEventListener("message", (e) => {
-      if (e.origin.includes("script.google.com")) {
-        const msg = e.data;
-        if (msg.includes("successfully")) {
-          form.reset();
-          updateComputed();
-        }
-        showMessage(msg, msg.includes("successfully") ? "green" : "red");
-      }
-    });
-  </script>
+    showMessage("Jap Count has been successfully submitted! ", "#555");
+  });
+</script>	
 	
 	</div>
 	<button onclick="startReading()"> 🏠 मुख्य पान </button> 
