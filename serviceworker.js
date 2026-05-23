@@ -1,6 +1,6 @@
 // Last updated on 29042025
 
-const CACHE_NAME = 'gurucharitra-v1.0.0.5';
+const CACHE_NAME = 'gurucharitra-v1.0.0.8';
 
 // Dynamically determine the base path (e.g., "/gurucharitra")
 const BASE_PATH = self.location.pathname.replace(/\/serviceworker\.js$/, '');
