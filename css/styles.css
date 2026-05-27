@@ -1,5 +1,14 @@
 /* styles.css */
 
+/*
+.header {
+    position: fixed;
+    top: env(safe-area-inset-top);
+    left: 0;
+    right: 0;
+}
+*/
+
 /* Basic styling */
 body {
     font-family: Arial, sans-serif;
