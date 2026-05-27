@@ -135,7 +135,7 @@ function goToGurucharitraPage01() {
      window.location.href = 'chapter1.html';
 }
 function goToGurucharitraPage02() {
-     window.location.href = 'chapter1.html';
+     window.location.href = 'chapter2.html';
 }
 function goToGurucharitraPage03() {
      window.location.href = 'chapter3.html';
