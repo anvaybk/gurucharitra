@@ -295,4 +295,37 @@ function onPlayerStateChange(event) {
     }
 }
 
+// For Auto download the content whenever available on device. Added on 27052026
+if ('serviceWorker' in navigator) {
 
+    navigator.serviceWorker
+        .register('../serviceworker.js')
+        .then(registration => {
+
+            console.log(
+                'SW registered:',
+                registration
+            );
+
+            registration.onupdatefound = () => {
+
+                const newWorker =
+                    registration.installing;
+
+                newWorker.onstatechange = () => {
+
+                    if (
+                        newWorker.state === 'installed' &&
+                        navigator.serviceWorker.controller
+                    ) {
+
+                        console.log(
+                            'New version available'
+                        );
+
+                        window.location.reload();
+                    }
+                };
+            };
+        });
+}
