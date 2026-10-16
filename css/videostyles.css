@@ -1,3 +1,13 @@
+/* To Maintains a standared 16:p aspect ratio 10162026 */
+
+.youtube-playlist,
+.video-item iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 20px;

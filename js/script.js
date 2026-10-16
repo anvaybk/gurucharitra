@@ -251,21 +251,45 @@ audioElements.forEach(audio => {
 // Get all Video elements for Video Gallery
 var currentlyPlaying;
 
-function onYouTubeIframeAPIReady() {
-    // Initialize video players
-    var videos = document.querySelectorAll('.youtube-video');
+// function onYouTubeIframeAPIReady() {
+    // // Initialize video players
+    // var videos = document.querySelectorAll('.youtube-video');
     
-    videos.forEach(function(video) {
-        var videoId = video.getAttribute('data-video-id');
-        new YT.Player(video.id, {
-            height: '450',
-            width: '640',
-            videoId: videoId,
-            events: {
-                'onStateChange': onPlayerStateChange
-            }
-        });
+    // videos.forEach(function(video) {
+        // var videoId = video.getAttribute('data-video-id');
+        // new YT.Player(video.id, {
+            // height: '450',
+            // width: '640',
+            // videoId: videoId,
+            // events: {
+                // 'onStateChange': onPlayerStateChange
+            // }
+        // });
+    // });
+
+function onYouTubeIframeAPIReady() {
+  // Setup individual videos
+  document.querySelectorAll('.youtube-video').forEach((el) => {
+    new YT.Player(el.id, {
+      videoId: el.dataset.videoId,
+      playerVars: {
+        rel: 0
+      }
     });
+  });
+
+  // Setup playlists with native playlist navigation
+  document.querySelectorAll('.youtube-playlist').forEach((el) => {
+    new YT.Player(el.id, {
+      playerVars: {
+        listType: 'playlist',
+        list: el.dataset.playlistId,
+        rel: 0
+      }
+    });
+  });
+}
+
 
     // Initialize playlists
     var playlists = document.querySelectorAll('.youtube-playlist');
